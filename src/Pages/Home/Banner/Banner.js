@@ -8,7 +8,7 @@ const Banner = () => {
     return (
         <section className="bg-hero-bg bg-center">
             <div className="container mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-center h-screen">
+                <div className="flex flex-col md:flex-row justify-center items-center h-screen">
                     <div className="text-white text-center md:text-left animate__animated animate__fadeInTopLeft">
                         <h1 className="text-5xl my-6">
                             Auto Parts Online Store
@@ -20,7 +20,7 @@ const Banner = () => {
                         <button class="btn btn-primary my-4">Buy Now</button>
                     </div>
                     <div class="w-11/12 animate__animated animate__fadeInRightBig">
-                        <img src={car} alt="" />
+                        <img className="mt-8 md:mt-0" src={car} alt="" />
                     </div>
                 </div>
             </div>
