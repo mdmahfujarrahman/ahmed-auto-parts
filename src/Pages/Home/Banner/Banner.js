@@ -17,9 +17,9 @@ const Banner = () => {
                             Special offer for auto parts for electric cars and
                             hybrid vehicles. To select the spare part you need.
                         </p>
-                        <button class="btn btn-primary my-4">Buy Now</button>
+                        <button className="btn btn-primary my-4">Buy Now</button>
                     </div>
-                    <div class="w-11/12 animate__animated animate__fadeInRightBig">
+                    <div className="w-11/12 animate__animated animate__fadeInRightBig">
                         <img className="mt-8 md:mt-0" src={car} alt="" />
                     </div>
                 </div>

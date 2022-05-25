@@ -11,7 +11,7 @@ const Offer = () => {
                 <img className="w-16" src={shipping} alt={shipping} />
                 <div className="ml-0 md:ml-8">
                     <h6 className="text-xl">Free Shipping</h6>
-                    <p>For orders from $500</p>
+                    <p>For orders from $1000</p>
                 </div>
             </div>
             <div className="flex flex-col md:flex-row items-center  border border-gray-200 py-4 px-10">
