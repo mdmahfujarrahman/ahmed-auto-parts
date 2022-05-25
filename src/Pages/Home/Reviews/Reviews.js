@@ -37,8 +37,8 @@ const Reviews = () => {
             <>
                 <Swiper
                     style={{
-                        "--swiper-navigation-color": "#fff",
-                        "--swiper-pagination-color": "#fff",
+                        "--swiper-navigation-color": "#FF3737",
+                        "--swiper-pagination-color": "#FF3737",
                     }}
                     lazy={true}
                     pagination={{

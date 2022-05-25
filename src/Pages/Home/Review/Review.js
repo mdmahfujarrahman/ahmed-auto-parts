@@ -7,6 +7,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const Review = ({ review }) => {
     const { name, rating, reviewtext } = review;
+
+    let totalRating;
+    
+    if(rating === 1){
+        totalRating = "⭐";
+    } else if(rating === 2){
+        totalRating = "⭐⭐";
+    } else if(rating === 3){
+        totalRating = "⭐⭐⭐";
+    } else if(rating === 4){
+        totalRating = "⭐⭐⭐⭐";
+    } else{
+        totalRating = "⭐⭐⭐⭐⭐";
+    }
     return (
         <>
             <Swiper
@@ -36,8 +50,10 @@ const Review = ({ review }) => {
                             </p>
                         </div>
                         <div className="flex justify-end mt-4">
-                            <p className="text-xl font-medium text-indigo-500">
-                                <small>{rating}</small>
+                            <p className="text-xl font-medium text-primary">
+                                <small>
+                                    {rating} {totalRating}
+                                </small>
                             </p>
                         </div>
                     </div>
