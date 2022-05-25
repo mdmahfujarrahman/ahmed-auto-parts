@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../Sheard/Footer';
 import Banner from '../Banner/Banner';
 import Offer from '../Offer/Offer';
 import OurFactory from '../OurFactory/OurFactory';
@@ -15,6 +16,7 @@ const Home = () => {
             <Summary/>
             <OurFactory/>
             <Reviews/>
+            <Footer/>
         </div>
     );
 };
