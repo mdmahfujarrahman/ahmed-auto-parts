@@ -6,9 +6,9 @@ import Parts from '../Parts/Parts';
 const Home = () => {
     return (
         <div>
-            <Banner/>
-            <Offer/>
-            <Parts/>
+            <Banner />
+            <Offer />
+            <Parts />
         </div>
     );
 };

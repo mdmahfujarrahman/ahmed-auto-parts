@@ -1,10 +1,10 @@
 import React from 'react';
-import './Loading.css';
+import spinner from '../../asset/spiner.png';
 
 const Loading = () => {
     return (
-        <div className="page-preloader">
-            <div className="loading"></div>
+        <div className="h-screen flex items-center justify-center">
+            <img className="w-28 animate-spin" src={spinner} alt="" />
         </div>
     );
 };
