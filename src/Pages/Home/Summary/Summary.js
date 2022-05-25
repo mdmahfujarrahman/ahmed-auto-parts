@@ -28,7 +28,7 @@ const Summary = () => {
                     <img className="w-48" src={country} alt="county" />
                     <div className="text-center text-white mt-8">
                         <h2 className="text-5xl">
-                            {<CountUp end={32} duration={4} />}+
+                            {<CountUp end={32} duration={7} />}+
                         </h2>
                         <p>Country</p>
                     </div>
@@ -37,7 +37,7 @@ const Summary = () => {
                     <img className="w-48" src={company} alt="company" />
                     <div className="text-center text-white mt-8">
                         <h2 className="text-5xl">
-                            {<CountUp end={101} duration={5} />}+
+                            {<CountUp end={101} duration={7} />}+
                         </h2>
                         <p>Company</p>
                     </div>
@@ -46,7 +46,7 @@ const Summary = () => {
                     <img className="w-48" src={parts} alt="parts" />
                     <div className="text-center text-white mt-8">
                         <h2 className="text-5xl">
-                            {<CountUp end={900981} duration={3} />}+
+                            {<CountUp end={900981} duration={7} />}+
                         </h2>
                         <p>Parts Supplied</p>
                     </div>
@@ -55,7 +55,7 @@ const Summary = () => {
                     <img className="w-48" src={feedback} alt="feedback" />
                     <div className="text-center text-white mt-8">
                         <h2 className="text-5xl">
-                            {<CountUp end={187} duration={3} />}+
+                            {<CountUp end={187} duration={7} />}+
                         </h2>
                         <p>Positive Feedback</p>
                     </div>
