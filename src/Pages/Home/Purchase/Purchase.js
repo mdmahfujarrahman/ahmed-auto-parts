@@ -48,7 +48,7 @@ const Purchase = () => {
                             </p>
                         </div>
                     </div>
-                    <div class="divider"></div>
+                    <div className="divider"></div>
                     <div className="flex items-center w-56">
                         <img className="w-8" src={packageIcon} alt="package" />
                         <p className="ml-4">Free Delivery From $500</p>
@@ -180,7 +180,7 @@ const Purchase = () => {
                             <small>* Minimum Order 100 pcs</small>
                         </p>
                         <input
-                            class="bg-primary cursor-pointer text-white input input-bordered w-full max-w-xs"
+                            className="bg-primary cursor-pointer text-white input input-bordered w-full max-w-xs"
                             type="submit"
                             value="Place Your Order"
                         />
