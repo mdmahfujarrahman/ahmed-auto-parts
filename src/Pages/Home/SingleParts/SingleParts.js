@@ -1,7 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SingleParts = ({ part }) => {
-    const {name, img, description, price, quantity} =  part ;
+    const {_id ,name, img, description, price, quantity} =  part ;
+    const navigate = useNavigate()
+
+    const purchaseHandle = id => {
+        navigate(`purchase/${id}`);
+    }
+    
+
+
     return (
         <div className="max-w-md mx-auto rounded overflow-hidden shadow-lg">
             <img
@@ -29,7 +38,10 @@ const SingleParts = ({ part }) => {
                 <p>
                     <small>* Minimum Order of 100 Pcs</small>
                 </p>
-                <button className="btn btn-primary w-[342px] lg:w-[400px] text-white">
+                <button
+                    onClick={() => purchaseHandle(_id)}
+                    className="btn btn-primary w-[342px] lg:w-[400px] text-white"
+                >
                     Purchase
                 </button>
             </div>

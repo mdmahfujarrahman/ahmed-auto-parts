@@ -13,7 +13,7 @@ const OurFactory = () => {
                     />
                     <div className="text-center lg:text-left ml-0 lg:ml-10">
                         <h1 className="text-5xl font-bold">Our Factory</h1>
-                        <p className="py-6">
+                        <p className="py-6 text-xl">
                             Ahmed Auto Parts offers a unique combination of
                             know-how in plastics moulding technologies for
                             clients in the automotive industry worldwide. Our

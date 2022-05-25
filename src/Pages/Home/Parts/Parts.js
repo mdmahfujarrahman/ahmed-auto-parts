@@ -11,9 +11,7 @@ const Parts = () => {
         isLoading,
         refetch,
     } = useQuery("parts", () =>
-        fetch("https://ahmed-auto-parts.herokuapp.com/parts").then((res) =>
-            res.json()
-        )
+        fetch("http://localhost:5000/parts").then((res) => res.json())
     );
 
     if (isLoading){
