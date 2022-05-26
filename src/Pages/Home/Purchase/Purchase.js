@@ -1,13 +1,16 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import quality from '../../../asset/barcode-scanner.png';
 import packageIcon from "../../../asset/package.png";
+import auth from '../../../firebase/firebase.init';
 import Loading from '../../Sheard/Loading';
 
 const Purchase = () => {
     const {id} = useParams()
+    const [user, loading] = useAuthState(auth);
     const {
         register,
         formState: { errors },
@@ -19,7 +22,7 @@ const Purchase = () => {
         fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
     );
 
-    if(isLoading){
+    if (isLoading || loading) {
         return <Loading />;
     }
 
@@ -65,52 +68,19 @@ const Purchase = () => {
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <input
-                            {...register("name", {
-                                required: {
-                                    value: true,
-                                    message: "Name is required",
-                                },
-                            })}
+                            {...register("name")}
+                            value={user.displayName}
                             type="text"
-                            placeholder="Enter Your Name"
+                            disabled
                             className="input input-bordered w-full max-w-xs mb-4"
                         />
-                        <label className="label">
-                            {errors.name?.type === "required" && (
-                                <span className="label-text-alt text-red-500">
-                                    {errors.name.message}
-                                </span>
-                            )}
-                        </label>
                         <input
-                            {...register("email", {
-                                required: {
-                                    value: true,
-                                    message: "Email is required",
-                                },
-                                pattern: {
-                                    value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/,
-                                    message: "Provide a valid email",
-                                },
-                            })}
+                            {...register("email")}
                             type="email"
-                            placeholder="Enter Your Email Address"
-                            className="input input-bordered w-full max-w-xs"
+                            value={user.email}
+                            disabled
+                            className="input input-bordered w-full max-w-xs mb-4"
                         />
-                        <label className="label">
-                            {errors.email?.type === "required" && (
-                                <span className="label-text-alt text-red-500">
-                                    {errors.email.message}
-                                </span>
-                            )}
-                        </label>
-                        <label className="label">
-                            {errors.email?.type === "pattern" && (
-                                <span className="label-text-alt text-red-500">
-                                    {errors.email.message}
-                                </span>
-                            )}
-                        </label>
                         <input
                             {...register("phone", {
                                 required: {
@@ -157,6 +127,10 @@ const Purchase = () => {
                                     value: 100,
                                     message: "Minimum Order 100 pcs",
                                 },
+                                max: {
+                                    value: `${partsDetails.quantity}`,
+                                    message: `Maximum Order less the Our Stock Pcs`,
+                                },
                             })}
                             type="number"
                             placeholder="Please Enter Order Quality"
@@ -171,6 +145,13 @@ const Purchase = () => {
                         </label>
                         <label className="label">
                             {errors.quantity?.type === "min" && (
+                                <span className="label-text-alt text-red-500">
+                                    {errors.quantity.message}
+                                </span>
+                            )}
+                        </label>
+                        <label className="label">
+                            {errors.quantity?.type === "max" && (
                                 <span className="label-text-alt text-red-500">
                                     {errors.quantity.message}
                                 </span>

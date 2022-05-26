@@ -1,12 +1,25 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../asset/logo.png';
+import auth from '../../firebase/firebase.init';
+import Loading from './Loading';
 
 
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
 
+
+    if(loading){
+        return <Loading />
+    }
     
+    const logout = () => {
+        signOut(auth);
+    };
+
     const menuItems = (
         <>
             <li>
@@ -21,9 +34,21 @@ const Navbar = () => {
             <li>
                 <NavLink to="/blogs">Blogs</NavLink>
             </li>
-            <li>
-                <NavLink to="/login">Log In</NavLink>
-            </li>
+            {user && (
+                <li>
+                    <NavLink to="/dashboard">Dashboard</NavLink>
+                </li>
+            )}
+
+            {user ? (
+                    <li>
+                        <button onClick={logout}>Sign out</button>
+                    </li>
+            ) : (
+                <li>
+                    <NavLink to="/login">Log In</NavLink>
+                </li>
+            )}
         </>
     );
         
@@ -62,7 +87,7 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className="navbar-end hidden lg:flex text-secondary">
-                    <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+                    <ul className="menu menu-horizontal p-0 text-white">{menuItems}</ul>
                 </div>
             </div>
         </div>
