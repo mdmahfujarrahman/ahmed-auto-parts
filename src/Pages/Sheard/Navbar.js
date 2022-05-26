@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../../asset/logo.png';
 import auth from '../../firebase/firebase.init';
 import Loading from './Loading';
@@ -10,6 +10,9 @@ import Loading from './Loading';
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    const location = useLocation();
+
+
 
 
     if(loading){
@@ -56,7 +59,7 @@ const Navbar = () => {
 
     return (
         <div className="navbar bg-primary">
-            <div className="container mx-auto">
+            <div className="container relative mx-auto">
                 <div className="navbar-start flex">
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -83,12 +86,39 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to="/">
-                        <img className="w-40 inline ml-16 md:ml-0" src={logo} alt="" />
+                        <img
+                            className="w-40 inline ml-16 md:ml-0"
+                            src={logo}
+                            alt=""
+                        />
                     </Link>
                 </div>
                 <div className="navbar-end hidden lg:flex text-secondary">
-                    <ul className="menu menu-horizontal p-0 text-white">{menuItems}</ul>
+                    <ul className="menu menu-horizontal p-0 text-white">
+                        {menuItems}
+                    </ul>
                 </div>
+                { location.pathname === '/dashboard' &&
+                    <label
+                        for="parts-side-bar"
+                        class="btn btn-ghost absolute right-0  drawer-button lg:hidden"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h8m-8 6h16"
+                            />
+                        </svg>
+                    </label>
+                }
             </div>
         </div>
     );

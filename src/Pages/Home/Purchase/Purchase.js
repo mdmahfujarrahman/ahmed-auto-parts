@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import quality from '../../../asset/barcode-scanner.png';
 import packageIcon from "../../../asset/package.png";
 import auth from '../../../firebase/firebase.init';
@@ -32,7 +33,6 @@ const Purchase = () => {
     }
 
     const onSubmit = data => {
-
         const orderDetails = {
             user: user.email,
             partsName: partsDetails.name,
@@ -53,34 +53,53 @@ const Purchase = () => {
         })
         .then(res => res.json())
         .then(orderData => {
-            reset()
-           if(orderData.results.insertedId){
-                const letestQuantity = parseInt(partsDetails.quantity - data.quantity);
-                if (!isNaN(letestQuantity)) {
-                    const updatePartsDetails = {
-                        _id: partsDetails._id,
-                        name: partsDetails.name,
-                        img: partsDetails.img,
-                        description: partsDetails.description,
-                        quantity: letestQuantity,
-                        price: partsDetails.price,
-                    };
-                    fetch(`http://localhost:5000/parts/${partsDetails._id}`, {
-                        method: "PUT",
-                        headers: {
-                            "content-type": "application/json",
-                        },
-                        body: JSON.stringify(updatePartsDetails),
-                    })
-                        .then((res) => res.json())
-                        .then((updateData) => {
-                            refetch()
-                        });
+            reset();
+            if (orderData.success) {
 
-                }
-
-               
-           }
+                    toast.success(
+                        `${user.displayName} your ${orderDetails.quantity} Pcs ${partsDetails.name} order was successfully placed. Total Price ${orderDetails.price}`
+                    );
+                    
+                    const letestQuantity = parseInt(
+                        partsDetails.quantity - data.quantity
+                    );
+                    if (!isNaN(letestQuantity)) {
+                        const updatePartsDetails = {
+                            _id: partsDetails._id,
+                            name: partsDetails.name,
+                            img: partsDetails.img,
+                            description: partsDetails.description,
+                            quantity: letestQuantity,
+                            price: partsDetails.price,
+                        };
+                        fetch(
+                            `http://localhost:5000/parts/${partsDetails._id}`,
+                            {
+                                method: "PUT",
+                                headers: {
+                                    "content-type": "application/json",
+                                    authorization: `Bearer ${localStorage.getItem(
+                                        "accessToken"
+                                    )}`,
+                                },
+                                body: JSON.stringify(updatePartsDetails),
+                            }
+                        )
+                            .then((res) => res.json())
+                            .then((updateData) => {
+                                
+                                refetch();
+                            });
+                    }
+            } else {
+                toast.error(
+                    `${user.displayName} your daily order limit end`,
+                    {
+                        toastId: "error1",
+                    }
+                );
+                
+            }
             
             
 
