@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import AddReview from "./Pages/Dashboard/AddReview/AddReview";
-import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
+import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
+import UpdateProfile from './Pages/Dashboard/UpdateProfile/UpdateProfile';
 import Home from './Pages/Home/Home/Home';
 import Purchase from './Pages/Home/Purchase/Purchase';
 import Login from './Pages/Login/Login/Login';
@@ -41,6 +42,7 @@ function App() {
                   <Route index element={<MyOrders />} />
                   <Route path="add-review" element={<AddReview />} />
                   <Route path="profile" element={<MyProfile />} />
+                  <Route path="update-profile" element={<UpdateProfile />} />
               </Route>
           </Routes>
           <ToastContainer />

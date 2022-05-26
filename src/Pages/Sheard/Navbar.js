@@ -13,8 +13,6 @@ const Navbar = () => {
     const location = useLocation();
 
 
-
-
     if(loading){
         return <Loading />
     }
@@ -98,7 +96,9 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                { location.pathname === '/dashboard' &&
+                {(location.pathname === "/dashboard" ||
+                    location.pathname === "/dashboard/add-review" ||
+                    location.pathname === "/dashboard/Profile") && (
                     <label
                         htmlFor="parts-side-bar"
                         className="btn btn-ghost absolute right-0  drawer-button lg:hidden"
@@ -118,7 +118,7 @@ const Navbar = () => {
                             />
                         </svg>
                     </label>
-                }
+                )}
             </div>
         </div>
     );

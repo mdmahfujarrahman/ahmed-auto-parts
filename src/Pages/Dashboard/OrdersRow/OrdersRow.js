@@ -9,7 +9,7 @@ const OrdersRow = ({ orderDetail, index }) => {
             <td>{quantity}</td>
             <td>{price}</td>
             <td>
-                <button class="btn btn-sm">Pay</button>
+                <button className="btn btn-sm">Pay</button>
             </td>
             <td>Pending</td>
         </tr>

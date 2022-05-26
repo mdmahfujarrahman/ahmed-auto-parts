@@ -61,10 +61,12 @@ const AddReview = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">White Your Review</span>
+                            <span className="label-text">
+                                White Your Review
+                            </span>
                         </label>
                         <textarea
-                            className="textarea textarea-success"
+                            className="textarea input-bordered"
                             {...register("reviewTexted", { required: true })}
                         />
                         {errors.reviewTexted?.type === "required" &&

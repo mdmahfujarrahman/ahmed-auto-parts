@@ -12,10 +12,11 @@ const Dashboard = () => {
                 type="checkbox"
                 className="drawer-toggle"
             />
-            <div className="drawer-content text-center">
-                <h2 className="text-4xl my-6">
+            <div className="drawer-content bg-gradient-to-r from-cyan-500 to-blue-500 text-center">
+                <h2 className="text-4xl text-white my-6">
                     {user.displayName}{" "}
-                    <span className="font-bold text-[#00263C]">
+                    <br/>
+                    <span className="font-bold text-rose-600">
                         Welcome to Your Dashboard
                     </span>
                 </h2>
