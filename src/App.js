@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
-import MyReviews from './Pages/Dashboard/MyReviews/MyReviews';
+import AddReview from "./Pages/Dashboard/AddReview/AddReview";
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
 import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
 import Home from './Pages/Home/Home/Home';
@@ -39,11 +39,11 @@ function App() {
                   }
               >
                   <Route index element={<MyOrders />} />
-                  <Route path="reviews" element={<MyReviews />} />
+                  <Route path="add-review" element={<AddReview />} />
                   <Route path="profile" element={<MyProfile />} />
               </Route>
           </Routes>
-          <ToastContainer/>
+          <ToastContainer />
       </div>
   );
 }

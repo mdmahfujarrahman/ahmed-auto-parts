@@ -100,8 +100,8 @@ const Navbar = () => {
                 </div>
                 { location.pathname === '/dashboard' &&
                     <label
-                        for="parts-side-bar"
-                        class="btn btn-ghost absolute right-0  drawer-button lg:hidden"
+                        htmlFor="parts-side-bar"
+                        className="btn btn-ghost absolute right-0  drawer-button lg:hidden"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

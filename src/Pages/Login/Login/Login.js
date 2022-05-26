@@ -55,11 +55,11 @@ const Login = () => {
 
     
     return (
-        <div class="hero min-h-screen bg-review-bg">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <div class="text-center ml-0 md:ml-6 text-white lg:text-left">
-                    <h1 class="text-5xl font-bold">Welcome!!</h1>
-                    <p class="py-6 text-xl">
+        <div className="hero min-h-screen bg-review-bg">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="text-center ml-0 md:ml-6 text-white lg:text-left">
+                    <h1 className="text-5xl font-bold">Welcome!!</h1>
+                    <p className="py-6 text-xl">
                         Welcome to Ahmed Auto Parts{" "}
                         <span className="text-primary">Login</span> page. If you
                         do not have an account for ordering and payment, you can
@@ -67,8 +67,8 @@ const Login = () => {
                         <br /> If so, please log in.
                     </p>
                 </div>
-                <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div class="card-body">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card-body">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
@@ -104,7 +104,7 @@ const Login = () => {
                                     )}
                                 </label>
                             </div>
-                            <div class="form-control">
+                            <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
@@ -140,29 +140,29 @@ const Login = () => {
                                 </label>
                                 {signInError}
 
-                                <label class="label">
+                                <label className="label">
                                     <Link
                                         to="/signup"
-                                        class="label-text-alt link link-hover"
+                                        className="label-text-alt link link-hover"
                                     >
                                         Craete a New Account!
                                     </Link>
                                 </label>
                             </div>
-                            <div class="form-control mt-6">
+                            <div className="form-control mt-6">
                                 <input
                                     type="submit"
                                     value="Log In"
-                                    class="btn btn-primary text-white my-4"
+                                    className="btn btn-primary text-white my-4"
                                 ></input>
                             </div>
                         </form>
-                        <div class="divider">
+                        <div className="divider">
                             <img className="10" src={piston} alt="piston" />
                         </div>
                         <button
                             onClick={() => signInWithGoogle()}
-                            class="btn btn-primary my-4"
+                            className="btn btn-primary my-4"
                         >
                             <div className="bg-white p-2 rounded">
                                 <img

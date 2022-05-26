@@ -55,7 +55,6 @@ const Purchase = () => {
         .then(orderData => {
             reset();
             if (orderData.success) {
-
                     toast.success(
                         `${user.displayName} your ${orderDetails.quantity} Pcs ${partsDetails.name} order was successfully placed. Total Price ${orderDetails.price}`
                     );
