@@ -5,48 +5,51 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import google from '../../../asset/google.png';
 import piston from '../../../asset/piston.png';
 import auth from '../../../firebase/firebase.init';
+import useToken from '../../../hooks/useToken';
 import Loading from '../../Sheard/Loading';
 
 
 const Login = () => {
     const navigate= useNavigate()
     const location = useLocation()
+    const [signInWithEmailAndPassword, user, loading, error] =
+        useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] =
+        useSignInWithGoogle(auth);
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm();
-    const [signInWithEmailAndPassword, user, loading, error] =
-        useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [token] = useToken(user || gUser);
+    
     const from = location.state?.from?.pathname || "/";
+    let signInError;
+
+
 
     useEffect(() => {
-        if (user || gUser) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, gUser, from, navigate]);
+    }, [token, from, navigate]);
  
-
-    let signInError;
+    
 
     if (error || gError) {
         signInError = (
             <p className="text-red-500 text-center">
-                <small>
-                    {error?.message || gError?.message}
-                </small>
+                <small>{error?.message || gError?.message}</small>
             </p>
         );
     }
 
-    if (loading || gLoading) {
-        return <Loading />;
+    if(loading || gLoading){
+        return <Loading/>
     }
 
-
-    const onSubmit = async (data) => {
-        await signInWithEmailAndPassword(data.email, data.password);
+    const onSubmit = (data) => {
+        signInWithEmailAndPassword(data.email, data.password);
         
     };
 
@@ -102,23 +105,48 @@ const Login = () => {
                                 </label>
                             </div>
                             <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Password</span>
+                                <label className="label">
+                                    <span className="label-text">Password</span>
                                 </label>
                                 <input
-                                    type="text"
-                                    placeholder="password"
-                                    class="input input-bordered"
+                                    {...register("password", {
+                                        required: {
+                                            value: true,
+                                            message: "Password is required",
+                                        },
+                                        minLength: {
+                                            value: 6,
+                                            message:
+                                                "Must be 6 Characters or Longer",
+                                        },
+                                    })}
+                                    type="password"
+                                    placeholder="Your Password"
+                                    className="input input-bordered w-full max-w-xs"
                                 />
+                                <label className="label">
+                                    {errors.password?.type === "required" && (
+                                        <span className="label-text-alt text-red-500">
+                                            {errors.password.message}
+                                        </span>
+                                    )}
+                                </label>
+                                <label className="label">
+                                    {errors.password?.type === "minLength" && (
+                                        <span className="label-text-alt text-red-500">
+                                            {errors.password.message}
+                                        </span>
+                                    )}
+                                </label>
                                 {signInError}
-                                
+
                                 <label class="label">
-                                        <Link
-                                            to="/signup"
-                                            class="label-text-alt link link-hover"
-                                        >
-                                            Craete a New Account!
-                                        </Link>
+                                    <Link
+                                        to="/signup"
+                                        class="label-text-alt link link-hover"
+                                    >
+                                        Craete a New Account!
+                                    </Link>
                                 </label>
                             </div>
                             <div class="form-control mt-6">

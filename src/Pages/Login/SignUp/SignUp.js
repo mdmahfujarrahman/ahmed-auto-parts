@@ -1,11 +1,11 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import google from "../../../asset/google.png";
 import piston from "../../../asset/piston.png";
 import auth from '../../../firebase/firebase.init';
-import Loading from '../../Sheard/Loading';
+import useToken from '../../../hooks/useToken';
 
 
 
@@ -13,37 +13,52 @@ const SignUp = () => {
      const [signInWithGoogle, gUser, gLoading, gError] =
          useSignInWithGoogle(auth);
      const [createUserWithEmailAndPassword, user, loading, error] =
-         useCreateUserWithEmailAndPassword(auth);
+         useCreateUserWithEmailAndPassword(auth, {
+             sendEmailVerification: true,
+         });
      const {
          register,
          formState: { errors },
          handleSubmit,
      } = useForm();
-     const [updateProfile, updating, uError] =
-         useCreateUserWithEmailAndPassword(auth, {
-             sendEmailVerification: true,
-         });
-     const navigate = useNavigate();
+    const [updateProfile, updating, uError] = useUpdateProfile(auth);
+    const navigate = useNavigate();
+    const [token] = useToken(user || gUser);
 
 
-     let signInError;
+    let signInError;
 
-     if (error || gError || uError) {
-         signInError = (
-             <p className="text-red-500 text-center">
-                 <small>
-                     {error?.message || gError?.message || uError?.message}
-                 </small>
-             </p>
-         );
+    if (error || gError || uError) {
+
+        if (error?.message === "Firebase: Error (auth/email-already-in-use)."){
+            signInError = (
+                <p className="text-red-500 text-center">
+                    <small>
+                        Email already in use
+                    </small>
+                </p>
+            );
+        }
+        if (gError){
+            signInError = (
+                <p className="text-red-500 text-center">
+                    <small>Google {gError?.message}</small>
+                </p>
+            );
+        }
+        if (gError) {
+            signInError = (
+                <p className="text-red-500 text-center">
+                    <small>Update {uError?.message}</small>
+                </p>
+            );
+        } 
      }
 
-     if (loading || gLoading || updating) {
-         return <Loading />;
-     }
+     
 
-     if (user || gUser) {
-         navigate("/");
+     if (token) {
+        navigate("/");
      }
 
      const onSubmit = async (data) => {

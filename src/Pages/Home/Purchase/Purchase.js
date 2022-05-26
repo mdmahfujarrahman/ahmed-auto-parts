@@ -15,10 +15,15 @@ const Purchase = () => {
         register,
         formState: { errors },
         handleSubmit,
+        reset
     } = useForm();
 
 
-    const { data: partsDetails, isLoading } = useQuery("partsDetails", () =>
+    const {
+        data: partsDetails,
+        isLoading,
+        refetch,
+    } = useQuery("partsDetails", () =>
         fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
     );
 
@@ -26,7 +31,64 @@ const Purchase = () => {
         return <Loading />;
     }
 
-    const onSubmit = data => console.log(data)
+    const onSubmit = data => {
+
+        const orderDetails = {
+            user: user.email,
+            partsName: partsDetails.name,
+            userName: user.displayName,
+            userAddress: data.address,
+            userPhone: data.phone,
+            quantity: data.quantity,
+            price: data.quantity * partsDetails.price,
+        };
+        
+        fetch("http://localhost:5000/order", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(orderDetails),
+        })
+        .then(res => res.json())
+        .then(orderData => {
+            reset()
+           if(orderData.results.insertedId){
+                const letestQuantity = parseInt(partsDetails.quantity - data.quantity);
+                if (!isNaN(letestQuantity)) {
+                    const updatePartsDetails = {
+                        _id: partsDetails._id,
+                        name: partsDetails.name,
+                        img: partsDetails.img,
+                        description: partsDetails.description,
+                        quantity: letestQuantity,
+                        price: partsDetails.price,
+                    };
+                    fetch(`http://localhost:5000/parts/${partsDetails._id}`, {
+                        method: "PUT",
+                        headers: {
+                            "content-type": "application/json",
+                        },
+                        body: JSON.stringify(updatePartsDetails),
+                    })
+                        .then((res) => res.json())
+                        .then((updateData) => {
+                            refetch()
+                        });
+
+                }
+
+               
+           }
+            
+            
+
+        })
+
+       
+
+    }
     
     
     
