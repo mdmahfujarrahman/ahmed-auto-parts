@@ -57,7 +57,7 @@ const UpdateProfile = () => {
                         reset()
                         if(updated.results){
                             toast.success('Your Profile Update Successfully')
-                            navigate('/dashboard/profile')
+                            navigate('/dashboard')
                         }
                     });
 

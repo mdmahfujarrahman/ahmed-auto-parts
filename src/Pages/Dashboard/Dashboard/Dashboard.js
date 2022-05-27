@@ -2,9 +2,17 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../../firebase/firebase.init';
+import useAdmin from '../../../hooks/useAdmin';
+import Loading from '../../Sheard/Loading';
 
 const Dashboard = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
+    const [admin, adminLoadings] = useAdmin(user);
+
+    if (loading || adminLoadings) {
+        return <Loading />;
+    }
+
     return (
         <div className="drawer drawer-mobile">
             <input
@@ -14,8 +22,7 @@ const Dashboard = () => {
             />
             <div className="drawer-content bg-gradient-to-r from-cyan-500 to-blue-500 text-center">
                 <h2 className="text-4xl text-white my-6">
-                    {user.displayName}{" "}
-                    <br/>
+                    {user.displayName} <br />
                     <span className="font-bold text-rose-600">
                         Welcome to Your Dashboard
                     </span>
@@ -28,15 +35,42 @@ const Dashboard = () => {
                     className="drawer-overlay"
                 ></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-[#00263C] text-white text-base-content">
+                    {admin && (
+                        <>
+                            <li>
+                                <Link to={"/dashboard/manage-user"}>
+                                    Manage User
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/manage-products"}>
+                                    Manage Products
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/manage-orders"}>
+                                    Manage Orders
+                                </Link>
+                            </li>
+                        </>
+                    )}
                     <li>
-                        <Link to={"/dashboard"}>My Orders</Link>
+                        <Link to={"/dashboard"}>My Profile</Link>
                     </li>
-                    <li>
-                        <Link to={"/dashboard/add-review"}>Add A Review</Link>
-                    </li>
-                    <li>
-                        <Link to={"/dashboard/Profile"}>My Profile</Link>
-                    </li>
+                    {!admin && (
+                        <>
+                            <li>
+                                <Link to={"/dashboard/my-order"}>
+                                    My Orders
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/add-review"}>
+                                    Add A Review
+                                </Link>
+                            </li>
+                        </>
+                    )}
                 </ul>
             </div>
         </div>
