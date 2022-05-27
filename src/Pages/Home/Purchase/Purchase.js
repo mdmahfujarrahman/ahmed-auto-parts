@@ -7,11 +7,13 @@ import { toast } from 'react-toastify';
 import quality from '../../../asset/barcode-scanner.png';
 import packageIcon from "../../../asset/package.png";
 import auth from '../../../firebase/firebase.init';
+import useAdmin from '../../../hooks/useAdmin';
 import Loading from '../../Sheard/Loading';
 
 const Purchase = () => {
     const {id} = useParams()
     const [user, loading] = useAuthState(auth);
+    const [admin, adminLoadings] = useAdmin(user);
     const {
         register,
         formState: { errors },
@@ -28,7 +30,7 @@ const Purchase = () => {
         fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
     );
 
-    if (isLoading || loading) {
+    if (isLoading || loading || adminLoadings) {
         return <Loading />;
     }
 
@@ -86,7 +88,6 @@ const Purchase = () => {
                         )
                             .then((res) => res.json())
                             .then((updateData) => {
-                                
                                 refetch();
                             });
                     }
@@ -242,6 +243,7 @@ const Purchase = () => {
                         </p>
                         <input
                             className="bg-primary cursor-pointer text-white input input-bordered w-full max-w-xs"
+                            disabled={admin}
                             type="submit"
                             value="Place Your Order"
                         />

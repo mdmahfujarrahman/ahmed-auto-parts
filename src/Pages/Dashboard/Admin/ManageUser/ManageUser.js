@@ -24,8 +24,8 @@ const ManageUser = () => {
     return (
         <div>
             <div class="overflow-x-auto">
-                <table class="table w-full">
-                    <thead>
+                <table class="table w-full ">
+                    <thead className="">
                         <tr>
                             <th>Serial</th>
                             <th>Name</th>
@@ -34,7 +34,7 @@ const ManageUser = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="bg-[#00263C]">
                         {users.map((user, index) => (
                             <Users
                                 index={index}

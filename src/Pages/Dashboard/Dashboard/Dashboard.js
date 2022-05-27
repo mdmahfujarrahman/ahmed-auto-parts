@@ -14,16 +14,16 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="drawer drawer-mobile">
+        <div className="drawer drawer-mobile bg-gradient-to-r from-[#16222A] to-[#3A6073]">
             <input
                 id="parts-side-bar"
                 type="checkbox"
                 className="drawer-toggle"
             />
-            <div className="drawer-content bg-gradient-to-r from-cyan-500 to-blue-500 text-center">
+            <div className="drawer-content text-center">
                 <h2 className="text-4xl text-white my-6">
                     {user.displayName} <br />
-                    <span className="font-bold text-rose-600">
+                    <span className="font-bold text-[#FFE98A]">
                         Welcome to Your Dashboard
                     </span>
                 </h2>
@@ -43,13 +43,13 @@ const Dashboard = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={"/dashboard/manage-products"}>
-                                    Manage Products
+                                <Link to={"/dashboard/manage-orders"}>
+                                    Manage Orders
                                 </Link>
                             </li>
                             <li>
-                                <Link to={"/dashboard/manage-orders"}>
-                                    Manage Orders
+                                <Link to={"/dashboard/manage-products"}>
+                                    Manage Products
                                 </Link>
                             </li>
                         </>
