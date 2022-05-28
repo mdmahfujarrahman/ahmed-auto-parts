@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AllProducts from './Pages/AllProducts/AllProducts';
+import Blogs from './Pages/Blogs/Blogs';
 import AddReview from "./Pages/Dashboard/AddReview/AddReview";
 import AddProducts from './Pages/Dashboard/Admin/AddProducts/AddProducts';
 import ManageOrders from './Pages/Dashboard/Admin/ManageOrders/ManageOrders';
@@ -28,6 +30,8 @@ function App() {
           <Navbar />
           <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/products" element={<AllProducts />} />
+              <Route path="/blogs" element={<Blogs />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
 

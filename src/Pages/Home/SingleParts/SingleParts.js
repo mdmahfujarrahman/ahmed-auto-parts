@@ -6,7 +6,7 @@ const SingleParts = ({ part }) => {
     const navigate = useNavigate()
 
     const purchaseHandle = id => {
-        navigate(`purchase/${id}`);
+        navigate(`/purchase/${id}`);
     }
     
 

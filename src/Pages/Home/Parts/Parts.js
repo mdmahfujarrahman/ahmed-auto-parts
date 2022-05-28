@@ -31,6 +31,7 @@ const Parts = () => {
                 {parts.map((part) => (
                     <SingleParts key={part._id} part={part} />
                 )).slice(0, 6)}
+                
             </div>
         </section>
     );

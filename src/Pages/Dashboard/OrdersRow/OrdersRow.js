@@ -4,10 +4,8 @@ const OrdersRow = ({ orderDetail, index, setDeleteOrderId }) => {
     const { _id, partsName, quantity, price } = orderDetail;
 
     const getId = (id) => {
-      setDeleteOrderId(id)  
-    }
-    
-
+        setDeleteOrderId(id);
+    };
     return (
         <tr>
             <th>{index + 1}</th>
@@ -16,7 +14,11 @@ const OrdersRow = ({ orderDetail, index, setDeleteOrderId }) => {
             <td>{price}</td>
             <td>
                 <button className="btn btn-sm">Pay</button> or{" "}
-                <label onClick={() => getId(_id)} for="delete-order" className="btn btn-sm btn-primary">
+                <label
+                    onClick={() => getId(_id)}
+                    for="delete-order"
+                    className="btn btn-sm btn-primary"
+                >
                     Cancel
                 </label>
             </td>
