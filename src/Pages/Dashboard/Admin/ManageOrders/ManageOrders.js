@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../../../Sheard/Loading';
 import AllOrders from '../AllOrders/AllOrders';
+import DeleteOrder from '../AllOrders/DeleteOrder';
 
 const ManageOrders = () => {
-
+    const [deleteOrderId, setDeleteOrderId] =useState('')
     const {
         data: orders,
         isLoading,
         refetch
     } = useQuery("orders", () =>
-        fetch("https://ahmed-auto-parts.herokuapp.com/orders", {
+        fetch("http://localhost:5000/orders", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -44,13 +45,19 @@ const ManageOrders = () => {
                         <AllOrders
                             key={order._id}
                             index={index}
+                            setDeleteOrderId={setDeleteOrderId}
                             order={order}
                             refetch={refetch}
                         />
                     ))}
+                    {deleteOrderId && (
+                        <DeleteOrder
+                            refetch={refetch}
+                            deleteOrderId={deleteOrderId}
+                        />
+                    )}
                 </tbody>
             </table>
-           
         </div>
     );
 };

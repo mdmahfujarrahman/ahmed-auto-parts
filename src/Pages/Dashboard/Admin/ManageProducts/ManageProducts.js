@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../../Sheard/Loading';
+import DeleteProduct from '../DeleteProduct/DeleteProduct';
 import Products from '../Products/Products';
 
 const ManageProducts = () => {
     const navigate = useNavigate()
+    const [deleteId, setDeleteId] = useState('')
     const {
         data: parts,
         isLoading,
+        refetch
     } = useQuery("parts", () =>
-        fetch("https://ahmed-auto-parts.herokuapp.com/parts").then((res) => res.json())
+        fetch("http://localhost:5000/parts").then((res) => res.json())
     );
 
     if (isLoading){
@@ -20,6 +23,7 @@ const ManageProducts = () => {
         navigate("/dashboard/add-products")
     }
 
+    console.log(deleteId);
     return (
         <div className="overflow-x-auto ">
             <button
@@ -44,9 +48,13 @@ const ManageProducts = () => {
                         <Products
                             key={product._id}
                             product={product}
+                            setDeleteId={setDeleteId}
                             index={index}
                         />
                     ))}
+                    {deleteId && (
+                        <DeleteProduct refetch={refetch} deleteId={deleteId} />
+                    )}
                 </tbody>
             </table>
         </div>

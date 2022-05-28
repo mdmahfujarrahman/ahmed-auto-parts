@@ -13,7 +13,7 @@ const MyProfile = () => {
     
     useEffect(() => {
         if (user) {
-            fetch(`https://ahmed-auto-parts.herokuapp.com/user?email=${user.email}`, {
+            fetch(`http://localhost:5000/user?email=${user.email}`, {
                 method: "GET",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AllOrders = ({ order, index, refetch }) => {
+const AllOrders = ({ order, index, refetch, setDeleteOrderId }) => {
     const {
         _id,
         user,
@@ -11,21 +11,23 @@ const AllOrders = ({ order, index, refetch }) => {
         price,
         userAddress,
     } = order;
-    if(user){
-        refetch()
+    if (user) {
+        refetch();
     }
     const cancelOrder = () => {
-        fetch(`https://ahmed-auto-parts.herokuapp.com/order/${_id}`, {
+        fetch(`http://localhost:5000/order/${_id}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
         })
             .then((res) => res.json())
-            .then((data) => {
-            });
+            .then((data) => {});
     };
 
+    const orderId = (id) => {
+        setDeleteOrderId(id);
+    };
 
     return (
         <tr className="hover">
@@ -40,14 +42,19 @@ const AllOrders = ({ order, index, refetch }) => {
             <td>Blue</td>
             <td>
                 <label
-                    htmlFor="delete-modal"
+                    htmlFor="delete-order"
+                    onClick={() => orderId(_id)}
                     className="btn btn-sm btn-primary text-white"
                 >
                     Cancel
                 </label>
             </td>
             <>
-                <input type="checkbox" id="delete-modal" className="modal-toggle" />
+                <input
+                    type="checkbox"
+                    id="delete-modal"
+                    className="modal-toggle"
+                />
                 <div className="modal">
                     <div className="modal-box">
                         <h3 className="font-bold text-lg">Confirm Cancel</h3>

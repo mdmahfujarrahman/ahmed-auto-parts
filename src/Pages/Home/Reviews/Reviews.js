@@ -15,7 +15,7 @@ const Reviews = () => {
         isLoading,
         refetch,
     } = useQuery("reviews", () =>
-        fetch("https://ahmed-auto-parts.herokuapp.com/reviews").then((res) => res.json())
+        fetch("http://localhost:5000/reviews").then((res) => res.json())
     );
 
     if (isLoading) {

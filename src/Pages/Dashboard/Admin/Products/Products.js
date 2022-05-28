@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Products = ({ product,index }) => {
+const Products = ({ product,index, setDeleteId }) => {
     const {_id, name, img, quantity, price} = product;
     const navigate = useNavigate()
 
@@ -9,6 +9,11 @@ const Products = ({ product,index }) => {
         navigate(`/dashboard/update-products/${id}`);
         
     }
+    
+    const getId = id => {
+        setDeleteId(id)
+    }
+    
  
     return (
         <tr>
@@ -20,20 +25,25 @@ const Products = ({ product,index }) => {
                     </div>
                 </div>
             </td>
-            <td className="hover:underline"><Link to={`/purchase/${_id}`}>{name}</Link></td>
+            <td className="hover:underline">
+                <Link to={`/purchase/${_id}`}>{name}</Link>
+            </td>
             <td>{price}</td>
             <td>{quantity}</td>
             <td>
-                
                 <button
                     onClick={() => updateProducts(_id)}
                     className="btn btn-sm text-black btn-success text-white"
                 >
                     Update
                 </button>
-                <button  className="btn btn-sm ml-4 btn-primary text-white">
+                <label
+                    for="delete-product"
+                    onClick={() => getId(_id)}
+                    className="btn btn-sm ml-4 btn-primary text-white"
+                >
                     Delete
-                </button>
+                </label>
             </td>
         </tr>
     );

@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 
-const Users = ({ user, index, refetch }) => {
+const Users = ({ user, index, refetch, setDeleteEmail }) => {
     const { displayName, email, role } = user;
 
     const makeAdmin = () => {
-        fetch(`https://ahmed-auto-parts.herokuapp.com/user/admin/${email}`, {
+        fetch(`http://localhost:5000/user/admin/${email}`, {
             method: "PUT",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -27,29 +27,12 @@ const Users = ({ user, index, refetch }) => {
                 }
             });
     };
-    const deleteUser = () => {
 
-        fetch(`https://ahmed-auto-parts.herokuapp.com/user/${email}`, {
-            method: "DELETE",
-            headers: {
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-        })
-        .then(res => {
-            if (res.status === 403){
-                toast.error(`you can't delete admin`)
-            }
-            return res.json();
-        })
-        .then(deleteData => {
-            if (deleteData.deletedCount > 0){
-                toast.success("User Successfully deleted");
-                refetch();
-            }
-            
-        })
+    const getEmail = email => {
+        setDeleteEmail(email)
     }
-
+    
+    
     return (
         <tr className="hover">
             <th>{index + 1}</th>
@@ -65,12 +48,13 @@ const Users = ({ user, index, refetch }) => {
                 )}
             </td>
             <td>
-                <button
-                    onClick={deleteUser}
+                <label
+                    onClick={() => getEmail(email)}
+                    for="delete-user"
                     className="btn btn-sm btn-primary text-white"
                 >
                     Delete
-                </button>
+                </label>
             </td>
         </tr>
     );

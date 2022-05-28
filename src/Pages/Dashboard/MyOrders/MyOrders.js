@@ -4,16 +4,18 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase/firebase.init';
 import Loading from '../../Sheard/Loading';
+import DeleteOrder from '../Admin/AllOrders/DeleteOrder';
 import OrdersRow from '../OrdersRow/OrdersRow';
 
 const MyOrders = () => {
     const [user, loading] = useAuthState(auth);
     const [orderDetails, setOrderDetails] = useState([])
     const navigate = useNavigate()
-
+    const [deleteOrderId,  setDeleteOrderId] = useState('')
+ 
     useEffect(() => {
             if (user) {
-                fetch(`https://ahmed-auto-parts.herokuapp.com/order?user=${user.email}`, {
+                fetch(`http://localhost:5000/order?user=${user.email}`, {
                     method: "GET",
                     headers: {
                         authorization: `Bearer ${localStorage.getItem(
@@ -55,8 +57,15 @@ const MyOrders = () => {
                 </thead>
                 <tbody>
                     {orderDetails.map((orderDetail, index) => (
-                        <OrdersRow index={index} orderDetail={orderDetail} />
+                        <OrdersRow
+                            index={index}
+                            setDeleteOrderId={setDeleteOrderId}
+                            orderDetail={orderDetail}
+                        />
                     ))}
+                    {deleteOrderId && (
+                        <DeleteOrder deleteOrderId={deleteOrderId} />
+                    )}
                 </tbody>
             </table>
         </div>

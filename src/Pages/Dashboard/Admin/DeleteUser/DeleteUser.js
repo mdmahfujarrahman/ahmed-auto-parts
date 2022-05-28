@@ -1,9 +1,10 @@
-import { toast } from "react-toastify";
+import React from 'react';
+import { toast } from 'react-toastify';
 
-const DeleteOrder = ({ deleteOrderId, refetch }) => {
-    const deleteProduct = () => {
-        if (deleteOrderId) {
-            fetch(`http://localhost:5000/order/${deleteOrderId}`, {
+const DeleteUser = ({ deleteEmail, refetch }) => {
+    const deleteUser = () => {
+        if (deleteEmail) {
+            fetch(`http://localhost:5000/user/${deleteEmail}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(
@@ -11,11 +12,18 @@ const DeleteOrder = ({ deleteOrderId, refetch }) => {
                     )}`,
                 },
             })
-                .then((res) => res.json())
+                .then((res) => {
+                    console.log(res);
+                    if (res.status === 403) {
+                        toast.error(`you can't delete admin`);
+                    }
+                    return res.json();
+                })
+
                 .then((data) => {
                     console.log(data);
                     if (data.deletedCount > 0) {
-                        toast.success("Order Successfully Deleted");
+                        toast.success("User Successfully Deleted");
                         refetch();
                     }
                 });
@@ -24,22 +32,22 @@ const DeleteOrder = ({ deleteOrderId, refetch }) => {
 
     return (
         <div>
-            <input type="checkbox" id="delete-order" class="modal-toggle" />
+            <input type="checkbox" id="delete-user" class="modal-toggle" />
             <div class="modal">
                 <div class="modal-box">
-                    <h3 class="font-bold text-lg">Delete Order</h3>
+                    <h3 class="font-bold text-lg">Delete User</h3>
                     <p class="py-4">
-                        Are you sure you want to delete this Order ?
+                        Are you sure you want to delete this User ?
                     </p>
                     <div class="modal-action">
                         <label
-                            onClick={deleteProduct}
-                            for="delete-order"
+                            onClick={deleteUser}
+                            for="delete-user"
                             class="btn btn-primary"
                         >
                             Yes
                         </label>
-                        <label for="delete-order" class="btn btn-success">
+                        <label for="delete-user" class="btn btn-success">
                             No
                         </label>
                     </div>
@@ -49,4 +57,4 @@ const DeleteOrder = ({ deleteOrderId, refetch }) => {
     );
 };
 
-export default DeleteOrder;
+export default DeleteUser;

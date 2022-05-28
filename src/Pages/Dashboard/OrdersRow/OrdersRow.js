@@ -1,7 +1,13 @@
 import React from 'react';
 
-const OrdersRow = ({ orderDetail, index }) => {
-    const { partsName, quantity, price } = orderDetail;
+const OrdersRow = ({ orderDetail, index, setDeleteOrderId }) => {
+    const { _id, partsName, quantity, price } = orderDetail;
+
+    const getId = (id) => {
+      setDeleteOrderId(id)  
+    }
+    
+
     return (
         <tr>
             <th>{index + 1}</th>
@@ -9,7 +15,10 @@ const OrdersRow = ({ orderDetail, index }) => {
             <td>{quantity}</td>
             <td>{price}</td>
             <td>
-                <button className="btn btn-sm">Pay</button>
+                <button className="btn btn-sm">Pay</button> or{" "}
+                <label onClick={() => getId(_id)} for="delete-order" className="btn btn-sm btn-primary">
+                    Cancel
+                </label>
             </td>
             <td>Pending</td>
         </tr>

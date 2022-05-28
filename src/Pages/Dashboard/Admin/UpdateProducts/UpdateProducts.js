@@ -22,7 +22,7 @@ const UpdateProducts = ({ productId }) => {
         isLoading,
         refetch,
     } = useQuery("partsDetails", () =>
-        fetch(`https://ahmed-auto-parts.herokuapp.com/parts/${id}`).then((res) => res.json())
+        fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
     );
 
     if (isLoading){
@@ -55,7 +55,7 @@ const UpdateProducts = ({ productId }) => {
                             quantity: updatedQuantity,
                             price: parseInt(data.price),
                         };
-                        fetch(`https://ahmed-auto-parts.herokuapp.com/parts/${id}`, {
+                        fetch(`http://localhost:5000/parts/${id}`, {
                             method: "PUT",
                             headers: {
                                 "content-type": "application/json",
@@ -69,6 +69,7 @@ const UpdateProducts = ({ productId }) => {
                             .then((updateData) => { 
                                 if(updateData.modifiedCount > 0){
                                     toast.success(`${partsDetails.name} updated successfully`)
+                                    navigate("/dashboard/manage-products");
                                     refetch();
                                 }
                             });

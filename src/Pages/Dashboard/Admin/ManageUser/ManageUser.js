@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../../../Sheard/Loading';
+import DeleteUser from '../DeleteUser/DeleteUser';
 import Users from '../Users/Users';
 
 const ManageUser = () => {
-
+    const [deleteEmail, setDeleteEmail] = useState('')
     const {
         data: users,
         isLoading,
         refetch,
     } = useQuery("users", () =>
-        fetch("https://ahmed-auto-parts.herokuapp.com/users", {
+        fetch("http://localhost:5000/users", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -39,10 +40,17 @@ const ManageUser = () => {
                             <Users
                                 index={index}
                                 key={user._id}
+                                setDeleteEmail={setDeleteEmail}
                                 refetch={refetch}
                                 user={user}
                             />
                         ))}
+                        {deleteEmail && (
+                            <DeleteUser
+                                refetch={refetch}
+                                deleteEmail={deleteEmail}
+                            />
+                        )}
                     </tbody>
                 </table>
             </div>

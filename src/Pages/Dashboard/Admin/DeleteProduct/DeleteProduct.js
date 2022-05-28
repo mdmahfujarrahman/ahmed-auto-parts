@@ -1,9 +1,10 @@
-import { toast } from "react-toastify";
+import React from 'react';
+import { toast } from 'react-toastify';
 
-const DeleteOrder = ({ deleteOrderId, refetch }) => {
+const DeleteProduct = ({ deleteId, refetch }) => {
     const deleteProduct = () => {
-        if (deleteOrderId) {
-            fetch(`http://localhost:5000/order/${deleteOrderId}`, {
+        if (deleteId) {
+            fetch(`http://localhost:5000/parts/${deleteId}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(
@@ -13,10 +14,9 @@ const DeleteOrder = ({ deleteOrderId, refetch }) => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
                     if (data.deletedCount > 0) {
-                        toast.success("Order Successfully Deleted");
-                        refetch();
+                        toast.success("Product Successfully deleted");
+                        refetch()
                     }
                 });
         }
@@ -24,22 +24,22 @@ const DeleteOrder = ({ deleteOrderId, refetch }) => {
 
     return (
         <div>
-            <input type="checkbox" id="delete-order" class="modal-toggle" />
+            <input type="checkbox" id="delete-product" class="modal-toggle" />
             <div class="modal">
                 <div class="modal-box">
-                    <h3 class="font-bold text-lg">Delete Order</h3>
+                    <h3 class="font-bold text-lg">Delete Product</h3>
                     <p class="py-4">
-                        Are you sure you want to delete this Order ?
+                        Are you sure you want to delete this product ?
                     </p>
                     <div class="modal-action">
                         <label
                             onClick={deleteProduct}
-                            for="delete-order"
+                            for="delete-product"
                             class="btn btn-primary"
                         >
                             Yes
                         </label>
-                        <label for="delete-order" class="btn btn-success">
+                        <label for="delete-product" class="btn btn-success">
                             No
                         </label>
                     </div>
@@ -49,4 +49,4 @@ const DeleteOrder = ({ deleteOrderId, refetch }) => {
     );
 };
 
-export default DeleteOrder;
+export default DeleteProduct;
