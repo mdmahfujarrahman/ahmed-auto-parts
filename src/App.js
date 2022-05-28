@@ -18,6 +18,7 @@ import Purchase from './Pages/Home/Purchase/Purchase';
 import Login from './Pages/Login/Login/Login';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import SignUp from './Pages/Login/SignUp/SignUp';
+import NotFound from './Pages/NotFound/NotFound';
 import Navbar from './Pages/Sheard/Navbar';
 
 
@@ -29,7 +30,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/" element={<Home />} />
+
               <Route
                   path="/purchase/:id"
                   element={
@@ -105,6 +106,7 @@ function App() {
                       }
                   />
               </Route>
+              <Route path="*" element={<NotFound />} />
           </Routes>
           <ToastContainer />
       </div>
