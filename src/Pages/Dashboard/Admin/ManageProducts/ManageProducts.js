@@ -1,10 +1,11 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../../../Sheard/Loading';
 import Products from '../Products/Products';
 
 const ManageProducts = () => {
-
+    const navigate = useNavigate()
     const {
         data: parts,
         isLoading,
@@ -15,9 +16,18 @@ const ManageProducts = () => {
     if (isLoading){
         return <Loading />
     }
+    const addProducts= () => {
+        navigate("/dashboard/add-products")
+    }
 
     return (
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto ">
+            <button
+                onClick={addProducts}
+                class="btn btn-wide hidden md:block btn-info absolute top-14 right-12"
+            >
+                Add Product
+            </button>
             <table class="table w-full">
                 <thead>
                     <tr>
@@ -31,7 +41,11 @@ const ManageProducts = () => {
                 </thead>
                 <tbody>
                     {parts.map((product, index) => (
-                        <Products key={product._id} product={product} index={index} />
+                        <Products
+                            key={product._id}
+                            product={product}
+                            index={index}
+                        />
                     ))}
                 </tbody>
             </table>

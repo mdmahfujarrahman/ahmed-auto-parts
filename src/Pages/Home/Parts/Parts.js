@@ -30,7 +30,7 @@ const Parts = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 container mx-auto gap-4">
                 {parts.map((part) => (
                     <SingleParts key={part._id} part={part} />
-                ))}
+                )).slice(0, 6)}
             </div>
         </section>
     );

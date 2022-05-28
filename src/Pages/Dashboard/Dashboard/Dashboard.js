@@ -14,7 +14,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="drawer drawer-mobile bg-gradient-to-r from-[#16222A] to-[#3A6073]">
+        <div className="drawer drawer-mobile bg-gradient-to-r from-[#16222A] to-[#3A6073] relative">
             <input
                 id="parts-side-bar"
                 type="checkbox"
@@ -50,6 +50,11 @@ const Dashboard = () => {
                             <li>
                                 <Link to={"/dashboard/manage-products"}>
                                     Manage Products
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/add-products"}>
+                                    Add A Products
                                 </Link>
                             </li>
                         </>

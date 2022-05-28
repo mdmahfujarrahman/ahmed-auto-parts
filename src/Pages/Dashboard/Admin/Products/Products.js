@@ -16,7 +16,10 @@ const Products = ({ product,index }) => {
             <td>{price}</td>
             <td>{quantity}</td>
             <td>
-                <button class="btn btn-sm btn-primary text-white">
+                <button class="btn btn-sm text-black btn-success text-white">
+                    Update
+                </button>
+                <button class="btn btn-sm ml-4 btn-primary text-white">
                     Delete
                 </button>
             </td>

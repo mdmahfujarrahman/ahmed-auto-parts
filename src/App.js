@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddReview from "./Pages/Dashboard/AddReview/AddReview";
+import AddProducts from './Pages/Dashboard/Admin/AddProducts/AddProducts';
 import ManageOrders from './Pages/Dashboard/Admin/ManageOrders/ManageOrders';
 import ManageProducts from './Pages/Dashboard/Admin/ManageProducts/ManageProducts';
 import ManageUser from './Pages/Dashboard/Admin/ManageUser/ManageUser';
@@ -82,7 +83,7 @@ function App() {
                       path="add-products"
                       element={
                           <RequireAdmin>
-                              <ManageProducts />
+                              <AddProducts />
                           </RequireAdmin>
                       }
                   />
