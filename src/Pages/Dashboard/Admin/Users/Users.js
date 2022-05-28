@@ -4,7 +4,7 @@ const Users = ({ user, index, refetch }) => {
     const { displayName, email, role } = user;
 
     const makeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://ahmed-auto-parts.herokuapp.com/user/admin/${email}`, {
             method: "PUT",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -29,7 +29,7 @@ const Users = ({ user, index, refetch }) => {
     };
     const deleteUser = () => {
 
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://ahmed-auto-parts.herokuapp.com/user/${email}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -57,9 +57,9 @@ const Users = ({ user, index, refetch }) => {
             <td>{email}</td>
             <td>
                 {role ? (
-                    <button class="btn btn-xs btn-success">Admin</button>
+                    <button className="btn btn-xs btn-success">Admin</button>
                 ) : (
-                    <button onClick={makeAdmin} class="btn btn-sm">
+                    <button onClick={makeAdmin} className="btn btn-sm">
                         Make Admin
                     </button>
                 )}
@@ -67,7 +67,7 @@ const Users = ({ user, index, refetch }) => {
             <td>
                 <button
                     onClick={deleteUser}
-                    class="btn btn-sm btn-primary text-white"
+                    className="btn btn-sm btn-primary text-white"
                 >
                     Delete
                 </button>

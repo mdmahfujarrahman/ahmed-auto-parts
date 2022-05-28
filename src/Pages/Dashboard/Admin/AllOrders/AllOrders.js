@@ -15,7 +15,7 @@ const AllOrders = ({ order, index, refetch }) => {
         refetch()
     }
     const cancelOrder = () => {
-        fetch(`http://localhost:5000/order/${_id}`, {
+        fetch(`https://ahmed-auto-parts.herokuapp.com/order/${_id}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -23,13 +23,12 @@ const AllOrders = ({ order, index, refetch }) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
             });
     };
 
 
     return (
-        <tr class="hover">
+        <tr className="hover">
             <th>{index + 1}</th>
             <td>{partsName}</td>
             <td>{userName}</td>
@@ -42,28 +41,28 @@ const AllOrders = ({ order, index, refetch }) => {
             <td>
                 <label
                     htmlFor="delete-modal"
-                    class="btn btn-sm btn-primary text-white"
+                    className="btn btn-sm btn-primary text-white"
                 >
                     Cancel
                 </label>
             </td>
             <>
-                <input type="checkbox" id="delete-modal" class="modal-toggle" />
-                <div class="modal">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg">Confirm Cancel</h3>
-                        <p class="py-4">
+                <input type="checkbox" id="delete-modal" className="modal-toggle" />
+                <div className="modal">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Confirm Cancel</h3>
+                        <p className="py-4">
                             Are you sure you want to cancel Order?
                         </p>
-                        <div class="modal-action">
+                        <div className="modal-action">
                             <label
                                 onClick={cancelOrder}
                                 for="delete-modal"
-                                class="btn"
+                                className="btn"
                             >
                                 Yse
                             </label>
-                            <label for="delete-modal" class="btn">
+                            <label for="delete-modal" className="btn">
                                 NO
                             </label>
                         </div>

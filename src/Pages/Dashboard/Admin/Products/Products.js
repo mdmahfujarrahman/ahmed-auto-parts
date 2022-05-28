@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Products = ({ product,index }) => {
     const {_id, name, img, quantity, price} = product;
@@ -14,24 +14,24 @@ const Products = ({ product,index }) => {
         <tr>
             <th>{index + 1}</th>
             <td>
-                <div class="avatar">
-                    <div class="w-16 rounded-full">
+                <div className="avatar">
+                    <div className="w-16 rounded-full">
                         <img src={img} alt={name} />
                     </div>
                 </div>
             </td>
-            <td>{name}</td>
+            <td className="hover:underline"><Link to={`/purchase/${_id}`}>{name}</Link></td>
             <td>{price}</td>
             <td>{quantity}</td>
             <td>
                 
                 <button
                     onClick={() => updateProducts(_id)}
-                    class="btn btn-sm text-black btn-success text-white"
+                    className="btn btn-sm text-black btn-success text-white"
                 >
                     Update
                 </button>
-                <button  class="btn btn-sm ml-4 btn-primary text-white">
+                <button  className="btn btn-sm ml-4 btn-primary text-white">
                     Delete
                 </button>
             </td>

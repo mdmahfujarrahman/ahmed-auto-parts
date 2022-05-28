@@ -10,7 +10,7 @@ const ManageProducts = () => {
         data: parts,
         isLoading,
     } = useQuery("parts", () =>
-        fetch("http://localhost:5000/parts").then((res) => res.json())
+        fetch("https://ahmed-auto-parts.herokuapp.com/parts").then((res) => res.json())
     );
 
     if (isLoading){
@@ -21,14 +21,14 @@ const ManageProducts = () => {
     }
 
     return (
-        <div class="overflow-x-auto ">
+        <div className="overflow-x-auto ">
             <button
                 onClick={addProducts}
-                class="btn btn-wide hidden md:block btn-info absolute top-14 right-12"
+                className="btn btn-wide hidden md:block btn-info absolute top-14 right-12"
             >
-                Add Product
+                Add Products
             </button>
-            <table class="table w-full">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th>Serial</th>

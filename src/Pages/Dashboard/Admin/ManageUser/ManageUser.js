@@ -10,7 +10,7 @@ const ManageUser = () => {
         isLoading,
         refetch,
     } = useQuery("users", () =>
-        fetch("http://localhost:5000/users", {
+        fetch("https://ahmed-auto-parts.herokuapp.com/users", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -23,8 +23,8 @@ const ManageUser = () => {
 
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full ">
+            <div className="overflow-x-auto">
+                <table className="table w-full ">
                     <thead className="">
                         <tr>
                             <th>Serial</th>
@@ -38,6 +38,7 @@ const ManageUser = () => {
                         {users.map((user, index) => (
                             <Users
                                 index={index}
+                                key={user._id}
                                 refetch={refetch}
                                 user={user}
                             />

@@ -10,7 +10,7 @@ const ManageOrders = () => {
         isLoading,
         refetch
     } = useQuery("orders", () =>
-        fetch("http://localhost:5000/orders", {
+        fetch("https://ahmed-auto-parts.herokuapp.com/orders", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -23,8 +23,8 @@ const ManageOrders = () => {
     } 
 
     return (
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div className="overflow-x-auto">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th>Serial</th>
