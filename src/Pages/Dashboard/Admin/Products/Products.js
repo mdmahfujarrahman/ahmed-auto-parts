@@ -1,7 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Products = ({ product,index }) => {
-    const {name, img, quantity, price} = product;
+    const {_id, name, img, quantity, price} = product;
+    const navigate = useNavigate()
+
+    const updateProducts = id => {
+        navigate(`/dashboard/update-products/${id}`);
+        
+    }
+ 
     return (
         <tr>
             <th>{index + 1}</th>
@@ -16,10 +24,14 @@ const Products = ({ product,index }) => {
             <td>{price}</td>
             <td>{quantity}</td>
             <td>
-                <button class="btn btn-sm text-black btn-success text-white">
+                
+                <button
+                    onClick={() => updateProducts(_id)}
+                    class="btn btn-sm text-black btn-success text-white"
+                >
                     Update
                 </button>
-                <button class="btn btn-sm ml-4 btn-primary text-white">
+                <button  class="btn btn-sm ml-4 btn-primary text-white">
                     Delete
                 </button>
             </td>

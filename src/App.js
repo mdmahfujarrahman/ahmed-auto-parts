@@ -8,6 +8,7 @@ import ManageProducts from './Pages/Dashboard/Admin/ManageProducts/ManageProduct
 import ManageUser from './Pages/Dashboard/Admin/ManageUser/ManageUser';
 import RequireAdmin from './Pages/Dashboard/Admin/RequireAdmin/RequireAdmin';
 import RequireUser from './Pages/Dashboard/Admin/RequireUser/RequireUser';
+import UpdateProducts from './Pages/Dashboard/Admin/UpdateProducts/UpdateProducts';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
@@ -84,6 +85,14 @@ function App() {
                       element={
                           <RequireAdmin>
                               <AddProducts />
+                          </RequireAdmin>
+                      }
+                  />
+                  <Route
+                      path="update-products/:id"
+                      element={
+                          <RequireAdmin>
+                              <UpdateProducts />
                           </RequireAdmin>
                       }
                   />

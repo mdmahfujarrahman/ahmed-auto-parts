@@ -1,20 +1,35 @@
 import React from 'react';
-import { useForm } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Loading from '../../../Sheard/Loading';
 
-
-const AddProducts = () => {
-    const navigate = useNavigate()
+const UpdateProducts = ({ productId }) => {
+    const {id} = useParams()
+    const navigate = useNavigate();
     const {
         register,
         formState: { errors },
         handleSubmit,
-        reset
+        reset,
     } = useForm();
-
-
     const imageStorageKey = "c357f10b5663a35f69dea2ea874ff55f";
+
+
+    const {
+        data: partsDetails,
+        isLoading,
+        refetch,
+    } = useQuery("partsDetails", () =>
+        fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
+    );
+
+    if (isLoading){
+        return <Loading />
+    } 
+    
+   
 
     const onSubmit = (data) => {
         const image = data.image[0];
@@ -29,50 +44,47 @@ const AddProducts = () => {
             .then((result) => {
                 if (result.success) {
                     const photoURL = result.data.url;
-                    const addProducts = {
-                        img: photoURL,
-                        name: data.name,
-                        description: data.description,
-                        quantity: data.quantity,
-                        price: data.price,
-                    };
-                    fetch(`http://localhost:5000/parts`, {
-                        method: "POST",
-                        headers: {
-                            "content-type": "application/json",
-                            authorization: `Bearer ${localStorage.getItem(
-                                "accessToken"
-                            )}`,
-                        },
-                        body: JSON.stringify(addProducts),
-                    })
-                        .then((res) => {
-                            if (res.success === 'false') {
-                                toast.error(
-                                    `Sorry!! ${data.name} already in our server`
-                                );
-                            }
-                            return res.json();
+                    
+                    const updatedQuantity =
+                        partsDetails.quantity + parseInt(data.quantity);
+                    if (!isNaN(updatedQuantity)){
+                        const updateProducts = {
+                            img: photoURL,
+                            name: data.name,
+                            description: data.description,
+                            quantity: updatedQuantity,
+                            price: parseInt(data.price),
+                        };
+                        fetch(`http://localhost:5000/parts/${id}`, {
+                            method: "PUT",
+                            headers: {
+                                "content-type": "application/json",
+                                authorization: `Bearer ${localStorage.getItem(
+                                    "accessToken"
+                                )}`,
+                            },
+                            body: JSON.stringify(updateProducts),
                         })
-                        .then((added) => {
-                            reset();
-                            if (added.results) {
-                                toast.success(
-                                    `${data.name} successfully added`
-                                );
-                                navigate("/dashboard/manage-products");
-                            }
-                        });
+                            .then((res) => res.json())
+                            .then((updateData) => { 
+                                if(updateData.modifiedCount > 0){
+                                    toast.success(`${partsDetails.name} updated successfully`)
+                                    refetch();
+                                }
+                            });
+                    }
+                        
                 }
             });
-    }
+    };
 
     return (
         <div>
             <div className="flex justify-center">
                 <div className="w-full mt-10">
                     <h2 className="text-center text-success font-bold text-2xl uppercase mb-10">
-                        Add Products
+                        Update products -{" "}
+                        <span className="text-white">{partsDetails.name}</span>
                     </h2>
                     <div className="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -89,7 +101,7 @@ const AddProducts = () => {
                                         },
                                     })}
                                     type="text"
-                                    placeholder="Put in products name"
+                                    placeholder={partsDetails.name}
                                     className="border border-gray-300 shadow p-3 w-full rounded mb-"
                                 />
                                 <label className="label">
@@ -118,7 +130,7 @@ const AddProducts = () => {
                                         },
                                     })}
                                     type="text"
-                                    placeholder="Put in products description"
+                                    placeholder={partsDetails.description}
                                     className="border border-gray-300 shadow p-3 w-full rounded mb-"
                                 />
                                 <label className="label">
@@ -156,7 +168,7 @@ const AddProducts = () => {
                                         },
                                     })}
                                     type="number"
-                                    placeholder="Put in products quantity"
+                                    placeholder={partsDetails.quantity}
                                     className="border border-gray-300 shadow p-3 w-full rounded mb-"
                                 />
                                 <label className="label">
@@ -192,7 +204,7 @@ const AddProducts = () => {
                                         },
                                     })}
                                     type="number"
-                                    placeholder="Put in Products Price"
+                                    placeholder={partsDetails.price}
                                     className="border border-gray-300 shadow p-3 w-full rounded mb-"
                                 />
                                 <label className="label">
@@ -236,7 +248,7 @@ const AddProducts = () => {
                             <input
                                 type="submit"
                                 className="block w-full btn btn-success text-white font-bold p-4 rounded-lg"
-                                value="Add Products"
+                                value="Update Products"
                             />
                         </form>
                     </div>
@@ -246,4 +258,4 @@ const AddProducts = () => {
     );
 };
 
-export default AddProducts;
+export default UpdateProducts;
