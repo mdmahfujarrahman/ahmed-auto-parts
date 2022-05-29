@@ -158,7 +158,7 @@ const UpdateProfile = () => {
                         type="submit"
                         value="Update Profile"
                     />
-                    <Link to="/dashboard/profile">
+                    <Link to="/dashboard">
                         <button className="btn btn-outline btn-success">
                             Back To Profile
                         </button>
