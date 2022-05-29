@@ -8,11 +8,11 @@ const MyPortfolio = () => {
     return (
         <div className="bg-[#111318]">
             <PortfolioBanner />
-            <div class="divider container mx-auto bg-slate-500 h-2 rounded"></div>
+            <div className="divider container mx-auto bg-slate-500 h-2 rounded"></div>
             <PortfolioAbout />
-            <div class="divider container mx-auto bg-slate-500 h-2 rounded"></div>
+            <div className="divider container mx-auto bg-slate-500 h-2 rounded"></div>
             <Skills />
-            <div class="divider container mx-auto bg-slate-500 h-2 rounded"></div>
+            <div className="divider container mx-auto bg-slate-500 h-2 rounded"></div>
             <Project />
         </div>
     );

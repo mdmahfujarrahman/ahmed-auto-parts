@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Project name is Ahmed Auto Parts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You Can Visit Live Website [Ahmed Auto Parts](https://ahmed-auto-parts.web.app/).
 
-## Available Scripts
+## Website Documentation
 
-In the project directory, you can run:
+# Table of Contents
 
-### `npm start`
+1. [General Info](#general-info)
+2. [Features](#features)
+3. [Website Screenshot](#website-screenshot)
+4. [Technologies](#technologies)
+5. [Installed Package list](#installed-package-list)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### General Info
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+-   In Home page there have 8 Section - `Navbar`, `Banner`, `Offer`, `FEATURED PRODUCTS`, `Company Summary`, `Company history` , `Customers feedback` and `footer`
+-   In FEATURED PRODUCTS section user can place his order. then they can payment or her/his dashboard.
+-   Also user can update his profile and give feedback for this company.
+-   Admin can delete unpaid order, user.
+-   Admin can add or update products.
+-   On the blogs page there added 6 important pieces of information.
+-   This website responsive on mobile, tablet and desktop.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Features
 
-### `npm run build`
+-   Log in Authentication
+-   Google Authorization
+-   Admin Dashboard
+-   User Delete Options
+-   Add products options
+-   Update Products options
+-   User Dashboard
+-   One Click order
+-   One Click order delete
+-   Add Review by User
+-   Profile Update
+-   Payment System
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Website Screenshot
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Ahmed Auto Parts](https://i.ibb.co/DpFMYFb/ahmed-auto-parts.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+A list of technologies used within this project:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   Tailwind CSS
+-   Javascript
+-   React
+-   React Router
+-   Node js
+-   Express js
+-   MongoDB
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Installed Package list
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+$ React Router
+$ Tailwind CSS
+$ Firebase
+$ React Firebase Hooks
+$ React Hook Form
+$ React Countup
+$ React Query
+$ swiper
+$ Animate CSS
+$ Toastify
+$ Daisy UI
+```

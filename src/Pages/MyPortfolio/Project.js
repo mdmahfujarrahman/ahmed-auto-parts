@@ -26,7 +26,9 @@ const Project = () => {
 
                         <a
                             href="https://googlenestmini.netlify.app/"
-                            class="btn btn-outline btn-success mt-4"
+                            className="btn btn-outline btn-success mt-4"
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             Live Link
                         </a>
@@ -55,7 +57,9 @@ const Project = () => {
 
                         <a
                             href="https://dr-jason-armstrong.firebaseapp.com/"
-                            class="btn btn-outline btn-success mt-4"
+                            className="btn btn-outline btn-success mt-4"
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             Live Link
                         </a>
@@ -83,7 +87,9 @@ const Project = () => {
 
                         <a
                             href="https://mkbhds-gears.netlify.app/"
-                            class="btn btn-outline btn-success mt-4"
+                            className="btn btn-outline btn-success mt-4"
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             Live Link
                         </a>
@@ -111,7 +117,9 @@ const Project = () => {
 
                         <a
                             href="https://brundage-convention-center.netlify.app/"
-                            class="btn btn-outline btn-success mt-4"
+                            className="btn btn-outline btn-success mt-4"
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             Live Link
                         </a>

@@ -23,22 +23,22 @@ const DeleteOrder = ({ deleteOrderId, refetch }) => {
 
     return (
         <div>
-            <input type="checkbox" id="delete-order" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box">
-                    <h3 class="font-bold text-lg">Delete Order</h3>
-                    <p class="py-4">
+            <input type="checkbox" id="delete-order" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Delete Order</h3>
+                    <p className="py-4">
                         Are you sure you want to delete this Order ?
                     </p>
-                    <div class="modal-action">
+                    <div className="modal-action">
                         <label
                             onClick={deleteProduct}
                             for="delete-order"
-                            class="btn btn-primary"
+                            className="btn btn-primary"
                         >
                             Yes
                         </label>
-                        <label for="delete-order" class="btn btn-success">
+                        <label for="delete-order" className="btn btn-success">
                             No
                         </label>
                     </div>

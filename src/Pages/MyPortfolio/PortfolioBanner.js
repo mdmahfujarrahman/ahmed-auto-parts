@@ -15,7 +15,7 @@ const PortfolioBanner = () => {
                 <h1 className="text-5xl my-8">Hey, I am</h1>
                 <h2 className="text-5xl my-8">Md Mahfujar Rahman</h2>
                 <div className="flex items-center space-x-4">
-                    <div class="divider w-8 rounded bg-green-400 h-2"></div>
+                    <div className="divider w-8 rounded bg-green-400 h-2"></div>
                     <p className="text-xl">
                         Jr. Front-end Developer. My Own World
                     </p>

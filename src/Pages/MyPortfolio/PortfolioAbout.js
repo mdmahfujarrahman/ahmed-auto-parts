@@ -7,7 +7,7 @@ const PortfolioAbout = () => {
         <div className="p-10 container mx-auto text-white animate__animated animate__backInUp animate__delay-1s">
             <div>
                 <h1 className="text-5xl font-bold">About me</h1>
-                <div class="divider w-48 bg-green-400 rounded-md  h-1"></div>
+                <div className="divider w-48 bg-green-400 rounded-md  h-1"></div>
             </div>
             <div className="text-white my-6">
                 <h3 className="text-3xl">
@@ -25,7 +25,7 @@ const PortfolioAbout = () => {
             </div>
             <a
                 href="https://www.linkedin.com/in/mahfuj-ahmed/"
-                class="btn btn-outline btn-success"
+                className="btn btn-outline btn-success"
                 target="_blank"
                 rel="noreferrer"
             >
@@ -34,7 +34,7 @@ const PortfolioAbout = () => {
             <div className="flex md:items-center space-x-4 flex-col md:flex-row my-4">
                 <div className="flex items-center space-x-2">
                     <p>I am available on</p>{" "}
-                    <div class="divider w-4 bg-green-400 rounded-md h-1"></div>
+                    <div className="divider w-4 bg-green-400 rounded-md h-1"></div>
                 </div>
                 <div className="flex items-center space-x-3">
                     <a
