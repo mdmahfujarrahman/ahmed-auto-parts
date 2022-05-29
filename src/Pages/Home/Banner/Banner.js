@@ -1,5 +1,6 @@
 import "animate.css";
 import React from 'react';
+import { Link } from "react-router-dom";
 import car from '../../../asset/Slider Car.png';
 
 const Banner = () => {
@@ -17,9 +18,9 @@ const Banner = () => {
                             Special offer for auto parts for electric cars and
                             hybrid vehicles. To select the spare part you need.
                         </p>
-                        <button className="btn btn-primary my-4">
+                        <Link to="/products" className="btn btn-primary my-4">
                             Buy Now
-                        </button>
+                        </Link>
                     </div>
                     <div className="w-11/12 animate__animated animate__fadeInRightBig">
                         <img className="mt-8 md:mt-0" src={car} alt="" />

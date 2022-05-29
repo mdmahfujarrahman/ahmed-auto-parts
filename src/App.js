@@ -20,7 +20,9 @@ import Purchase from './Pages/Home/Purchase/Purchase';
 import Login from './Pages/Login/Login/Login';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import SignUp from './Pages/Login/SignUp/SignUp';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import NotFound from './Pages/NotFound/NotFound';
+import Payment from './Pages/Payment/Payment';
 import Navbar from './Pages/Sheard/Navbar';
 
 
@@ -32,6 +34,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<AllProducts />} />
               <Route path="/blogs" element={<Blogs />} />
+              <Route path="/portfolio" element={<MyPortfolio />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
 
@@ -69,6 +72,7 @@ function App() {
                       }
                   />
                   <Route path="update-profile" element={<UpdateProfile />} />
+                  <Route path="payment/:id" element={<Payment />} />
                   <Route
                       path="manage-orders"
                       element={

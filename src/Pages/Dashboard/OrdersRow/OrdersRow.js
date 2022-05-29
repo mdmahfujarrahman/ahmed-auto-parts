@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const OrdersRow = ({ orderDetail, index, setDeleteOrderId }) => {
-    const { _id, partsName, quantity, price } = orderDetail;
+    const { _id, partsName, quantity, price, paid } = orderDetail;
 
     const getId = (id) => {
         setDeleteOrderId(id);
     };
+    console.log(paid);
     return (
         <tr>
             <th>{index + 1}</th>
@@ -13,7 +15,10 @@ const OrdersRow = ({ orderDetail, index, setDeleteOrderId }) => {
             <td>{quantity}</td>
             <td>{price}</td>
             <td>
-                <button className="btn btn-sm">Pay</button> or{" "}
+                <Link to={`/dashboard/payment/${_id}`} className="btn btn-sm">
+                    Pay
+                </Link>{" "}
+                or{" "}
                 <label
                     onClick={() => getId(_id)}
                     for="delete-order"

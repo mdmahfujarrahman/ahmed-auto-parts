@@ -34,7 +34,7 @@ const Dashboard = () => {
                     htmlFor="parts-side-bar"
                     className="drawer-overlay"
                 ></label>
-                <ul className="menu p-4 overflow-y-auto w-80 bg-[#00263C] text-white text-base-content">
+                <ul className="menu p-4 overflow-y-auto w-80 bg-[#00263C] text-white">
                     {admin && (
                         <>
                             <li>
