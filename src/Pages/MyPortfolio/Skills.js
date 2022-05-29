@@ -14,7 +14,7 @@ const Skills = () => {
     return (
         <div className="p-10 container mx-auto">
             <h1 className="text-5xl text-white">Technologies that I know</h1>
-            <div className="flex justify-start flex-col lg:flex-row space-x-0  lg:space-x-6 space-y-4 lg:space-y-0 my-6">
+            <div className="flex justify-start flex-col lg:flex-row space-x-0  lg:space-x-6 space-y-4 lg:space-y-0 my-10">
                 <div className="flex space-x-4">
                     <img className="w-14" src={html} alt="html" />
                     <img className="w-14" src={css} alt="css" />
