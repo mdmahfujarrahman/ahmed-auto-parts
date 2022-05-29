@@ -13,7 +13,7 @@ const ManageProducts = () => {
         isLoading,
         refetch
     } = useQuery("parts", () =>
-        fetch("http://localhost:5000/parts").then((res) => res.json())
+        fetch("https://ahmed-auto-parts.herokuapp.com/parts").then((res) => res.json())
     );
 
     if (isLoading){
@@ -22,8 +22,6 @@ const ManageProducts = () => {
     const addProducts= () => {
         navigate("/dashboard/add-products")
     }
-
-    console.log(deleteId);
     return (
         <div className="overflow-x-auto ">
             <button

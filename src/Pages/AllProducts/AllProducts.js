@@ -9,9 +9,8 @@ const AllProducts = () => {
         isLoading,
         refetch,
     } = useQuery("parts", () =>
-        fetch("http://localhost:5000/parts").then((res) => res.json())
+        fetch("https://ahmed-auto-parts.herokuapp.com/parts").then((res) => res.json())
     );
-    console.log(parts);
     if (isLoading) {
         return <Loading />;
     }

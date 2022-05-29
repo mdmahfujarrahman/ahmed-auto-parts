@@ -15,7 +15,7 @@ const AllOrders = ({ order, index, refetch, setDeleteOrderId }) => {
         refetch();
     }
     const cancelOrder = () => {
-        fetch(`http://localhost:5000/order/${_id}`, {
+        fetch(`https://ahmed-auto-parts.herokuapp.com/order/${_id}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,

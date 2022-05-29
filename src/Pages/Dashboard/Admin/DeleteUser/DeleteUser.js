@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const DeleteUser = ({ deleteEmail, refetch }) => {
     const deleteUser = () => {
         if (deleteEmail) {
-            fetch(`http://localhost:5000/user/${deleteEmail}`, {
+            fetch(`https://ahmed-auto-parts.herokuapp.com/user/${deleteEmail}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(
@@ -13,7 +13,6 @@ const DeleteUser = ({ deleteEmail, refetch }) => {
                 },
             })
                 .then((res) => {
-                    console.log(res);
                     if (res.status === 403) {
                         toast.error(`you can't delete admin`);
                     }
@@ -21,7 +20,6 @@ const DeleteUser = ({ deleteEmail, refetch }) => {
                 })
 
                 .then((data) => {
-                    console.log(data);
                     if (data.deletedCount > 0) {
                         toast.success("User Successfully Deleted");
                         refetch();

@@ -23,7 +23,7 @@ const AddReview = () => {
         };
 
         
-        fetch("http://localhost:5000/review", {
+        fetch("https://ahmed-auto-parts.herokuapp.com/review", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

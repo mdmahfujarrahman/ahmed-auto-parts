@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const DeleteProduct = ({ deleteId, refetch }) => {
     const deleteProduct = () => {
         if (deleteId) {
-            fetch(`http://localhost:5000/parts/${deleteId}`, {
+            fetch(`https://ahmed-auto-parts.herokuapp.com/parts/${deleteId}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(

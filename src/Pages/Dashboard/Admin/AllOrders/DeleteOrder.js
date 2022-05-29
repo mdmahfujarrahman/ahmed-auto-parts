@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 const DeleteOrder = ({ deleteOrderId, refetch }) => {
     const deleteProduct = () => {
         if (deleteOrderId) {
-            fetch(`http://localhost:5000/order/${deleteOrderId}`, {
+            fetch(`https://ahmed-auto-parts.herokuapp.com/order/${deleteOrderId}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(
@@ -13,7 +13,6 @@ const DeleteOrder = ({ deleteOrderId, refetch }) => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
                     if (data.deletedCount > 0) {
                         toast.success("Order Successfully Deleted");
                         refetch();

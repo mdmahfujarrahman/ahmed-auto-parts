@@ -7,7 +7,6 @@ const OrdersRow = ({ orderDetail, index, setDeleteOrderId }) => {
     const getId = (id) => {
         setDeleteOrderId(id);
     };
-    console.log(paid);
     return (
         <tr>
             <th>{index + 1}</th>

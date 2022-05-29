@@ -27,7 +27,7 @@ const Purchase = () => {
         isLoading,
         refetch,
     } = useQuery("partsDetails", () =>
-        fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
+        fetch(`https://ahmed-auto-parts.herokuapp.com/parts/${id}`).then((res) => res.json())
     );
 
     if (isLoading || loading || adminLoadings) {
@@ -45,7 +45,7 @@ const Purchase = () => {
             price: data.quantity * partsDetails.price,
         };
         
-        fetch("http://localhost:5000/order", {
+        fetch("https://ahmed-auto-parts.herokuapp.com/order", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -74,7 +74,7 @@ const Purchase = () => {
                             price: partsDetails.price,
                         };
                         fetch(
-                            `http://localhost:5000/parts/${partsDetails._id}`,
+                            `https://ahmed-auto-parts.herokuapp.com/parts/${partsDetails._id}`,
                             {
                                 method: "PUT",
                                 headers: {

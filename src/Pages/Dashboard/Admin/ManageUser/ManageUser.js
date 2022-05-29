@@ -11,7 +11,7 @@ const ManageUser = () => {
         isLoading,
         refetch,
     } = useQuery("users", () =>
-        fetch("http://localhost:5000/users", {
+        fetch("https://ahmed-auto-parts.herokuapp.com/users", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
