@@ -19,7 +19,7 @@ const AddReview = () => {
             name: user.displayName,
             email: user.email,
             reviewtext: review.reviewTexted,
-            rating: review.rating,
+            rating: parseInt(review.rating),
         };
 
         

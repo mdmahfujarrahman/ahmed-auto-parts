@@ -39,7 +39,7 @@ const AllOrders = ({ order, index, refetch, setDeleteOrderId }) => {
             <td>{user}</td>
             <td>{quantity}</td>
             <td>{price}</td>
-            <td>Blue</td>
+            <td>Pending</td>
             <td>
                 <label
                     htmlFor="delete-order"

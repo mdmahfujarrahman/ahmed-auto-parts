@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CountUp from "react-countup";
 import company from '../../../asset/company.png';
 import country from '../../../asset/country.png';
@@ -7,6 +7,10 @@ import parts from '../../../asset/parts.png';
 import piston from '../../../asset/piston.png';
 
 const Summary = () => {
+    const [focus, setFocus] = useState(false)
+
+
+
     return (
         <section className="bg-summary-bg bg-center w-full py-20">
             <div>
@@ -32,12 +36,28 @@ const Summary = () => {
                         </h2>
                         <p>Country</p>
                     </div>
+                    
                 </div>
                 <div className="mt-6 md:mt-0">
                     <img className="w-48" src={company} alt="company" />
                     <div className="text-center text-white mt-8">
                         <h2 className="text-5xl">
-                            {<CountUp end={101} duration={7} />}+
+                            {/* <ReactVisibilitySensor
+                                onChange={(isVisible) => {
+                                    if (isVisible) {
+                                        setFocus(true);
+                                    }
+                                }}
+                            > */}
+                                {
+                                    <CountUp
+                                        start={focus ? 0 : null}
+                                        end={101}
+                                        duration={7}
+                                    />
+                                }
+                                +
+                            {/* </ReactVisibilitySensor> */}
                         </h2>
                         <p>Company</p>
                     </div>
