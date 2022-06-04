@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const Review = ({ review }) => {
     const { name, rating, reviewtext } = review;
-    console.log(parseInt(rating));
     let totalRating;
     
     if(parseInt(rating) === 1){
@@ -21,7 +20,6 @@ const Review = ({ review }) => {
     } else{
         totalRating = "⭐⭐⭐⭐⭐";
     }
-    console.log(totalRating);
     return (
         <>
             <Swiper

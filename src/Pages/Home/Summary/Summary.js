@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
 import company from '../../../asset/company.png';
 import country from '../../../asset/country.png';
 import feedback from '../../../asset/feedback.png';
@@ -7,7 +8,7 @@ import parts from '../../../asset/parts.png';
 import piston from '../../../asset/piston.png';
 
 const Summary = () => {
-    const [focus, setFocus] = useState(false)
+
 
 
 
@@ -36,28 +37,23 @@ const Summary = () => {
                         </h2>
                         <p>Country</p>
                     </div>
-                    
                 </div>
                 <div className="mt-6 md:mt-0">
                     <img className="w-48" src={company} alt="company" />
                     <div className="text-center text-white mt-8">
                         <h2 className="text-5xl">
-                            {/* <ReactVisibilitySensor
-                                onChange={(isVisible) => {
-                                    if (isVisible) {
-                                        setFocus(true);
-                                    }
-                                }}
-                            > */}
-                                {
-                                    <CountUp
-                                        start={focus ? 0 : null}
-                                        end={101}
-                                        duration={7}
-                                    />
-                                }
-                                +
-                            {/* </ReactVisibilitySensor> */}
+                            {
+                                <CountUp end={101} duration={7}>
+                                    {({ countUpRef, start }) => (
+                                        <VisibilitySensor
+                                            onChange={start}
+                                            delayedCall
+                                        >
+                                            <span ref={countUpRef} />
+                                        </VisibilitySensor>
+                                    )}
+                                </CountUp>
+                            }
                         </h2>
                         <p>Company</p>
                     </div>
@@ -66,7 +62,19 @@ const Summary = () => {
                     <img className="w-48" src={parts} alt="parts" />
                     <div className="text-center text-white mt-8">
                         <h2 className="text-5xl">
-                            {<CountUp end={900981} duration={7} />}+
+                            {
+                                <CountUp end={900981} duration={7}>
+                                    {({ countUpRef, start }) => (
+                                        <VisibilitySensor
+                                            onChange={start}
+                                            delayedCall
+                                        >
+                                            <span ref={countUpRef} />
+                                        </VisibilitySensor>
+                                    )}
+                                </CountUp>
+                            }
+                            +
                         </h2>
                         <p>Parts Supplied</p>
                     </div>

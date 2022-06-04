@@ -23,10 +23,18 @@ const Footer = () => {
             </div>
             <div>
                 <span className="footer-title">Products</span>
-                <Link to="/"className="link link-hover">Engine Parts</Link>
-                <Link to="/"className="link link-hover">Suspension Parts</Link>
-                <Link to="/"className="link link-hover">Body & Device</Link>
-                <Link to="/"className="link link-hover">Lighting Systems</Link>
+                <Link to="/products" className="link link-hover">
+                    Engine Parts
+                </Link>
+                <Link to="/products" className="link link-hover">
+                    Suspension Parts
+                </Link>
+                <Link to="/products" className="link link-hover">
+                    Body & Device
+                </Link>
+                <Link to="/products" className="link link-hover">
+                    Lighting Systems
+                </Link>
             </div>
             <div>
                 <span className="footer-title">Contact Info</span>

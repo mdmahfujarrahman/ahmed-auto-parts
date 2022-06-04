@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ScrollToTop from './hooks/ScrollToTop';
 import AllProducts from './Pages/AllProducts/AllProducts';
 import Blogs from './Pages/Blogs/Blogs';
 import AddReview from "./Pages/Dashboard/AddReview/AddReview";
@@ -30,6 +31,7 @@ function App() {
   return (
       <div>
           <Navbar />
+          <ScrollToTop />
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<AllProducts />} />
