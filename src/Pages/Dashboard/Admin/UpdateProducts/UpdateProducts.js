@@ -22,7 +22,7 @@ const UpdateProducts = ({ productId }) => {
         isLoading,
         refetch,
     } = useQuery("partsDetails", () =>
-        fetch(`https://ahmed-auto-parts.herokuapp.com/parts/${id}`).then((res) => res.json())
+        fetch(`https://ahmed-auto-parts-server.onrender.com/parts/${id}`).then((res) => res.json())
     );
 
     if (isLoading){
@@ -55,7 +55,7 @@ const UpdateProducts = ({ productId }) => {
                             quantity: updatedQuantity,
                             price: parseInt(data.price),
                         };
-                        fetch(`https://ahmed-auto-parts.herokuapp.com/parts/${id}`, {
+                        fetch(`https://ahmed-auto-parts-server.onrender.com/parts/${id}`, {
                             method: "PUT",
                             headers: {
                                 "content-type": "application/json",

@@ -4,7 +4,7 @@ const Users = ({ user, index, refetch, setDeleteEmail }) => {
     const { displayName, email, role } = user;
 
     const makeAdmin = () => {
-        fetch(`https://ahmed-auto-parts.herokuapp.com/user/admin/${email}`, {
+        fetch(`https://ahmed-auto-parts-server.onrender.com/user/admin/${email}`, {
             method: "PUT",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,

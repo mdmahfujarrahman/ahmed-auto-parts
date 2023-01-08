@@ -42,7 +42,7 @@ const UpdateProfile = () => {
                     education: data.education,
                     address: data.address,
                 };
-                fetch(`https://ahmed-auto-parts.herokuapp.com/user/${user.email}`, {
+                fetch(`https://ahmed-auto-parts-server.onrender.com/user/${user.email}`, {
                     method: "PUT",
                     headers: {
                         "content-type": "application/json",

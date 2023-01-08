@@ -13,7 +13,7 @@ const ManageProducts = () => {
         isLoading,
         refetch
     } = useQuery("parts", () =>
-        fetch("https://ahmed-auto-parts.herokuapp.com/parts").then((res) => res.json())
+        fetch("https://ahmed-auto-parts-server.onrender.com/parts").then((res) => res.json())
     );
 
     if (isLoading){

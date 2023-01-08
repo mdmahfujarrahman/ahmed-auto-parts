@@ -36,7 +36,7 @@ const AddProducts = () => {
                         quantity: data.quantity,
                         price: data.price,
                     };
-                    fetch(`https://ahmed-auto-parts.herokuapp.com/parts`, {
+                    fetch(`https://ahmed-auto-parts-server.onrender.com/parts`, {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",
