@@ -15,7 +15,7 @@ const Reviews = () => {
         isLoading,
         refetch,
     } = useQuery("reviews", () =>
-        fetch("https://ahmed-auto-parts-server.onrender.com/reviews").then((res) => res.json())
+        fetch("https://ahmed-auto-parts-server.vercel.app/reviews").then((res) => res.json())
     );
 
     if (isLoading) {

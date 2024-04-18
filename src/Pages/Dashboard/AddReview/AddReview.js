@@ -23,7 +23,7 @@ const AddReview = () => {
         };
 
         
-        fetch("https://ahmed-auto-parts-server.onrender.com/review", {
+        fetch("https://ahmed-auto-parts-server.vercel.app/review", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

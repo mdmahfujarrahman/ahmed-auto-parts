@@ -15,7 +15,7 @@ const AllOrders = ({ order, index, refetch, setDeleteOrderId }) => {
         refetch();
     }
     const cancelOrder = () => {
-        fetch(`https://ahmed-auto-parts-server.onrender.com/order/${_id}`, {
+        fetch(`https://ahmed-auto-parts-server.vercel.app/order/${_id}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,

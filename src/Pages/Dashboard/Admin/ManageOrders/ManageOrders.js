@@ -11,7 +11,7 @@ const ManageOrders = () => {
         isLoading,
         refetch
     } = useQuery("orders", () =>
-        fetch("https://ahmed-auto-parts-server.onrender.com/orders", {
+        fetch("https://ahmed-auto-parts-server.vercel.app/orders", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,

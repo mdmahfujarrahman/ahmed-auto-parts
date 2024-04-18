@@ -11,7 +11,7 @@ const Parts = () => {
         isLoading,
         refetch,
     } = useQuery("parts", () =>
-        fetch("https://ahmed-auto-parts-server.onrender.com/parts").then((res) => res.json())
+        fetch("https://ahmed-auto-parts-server.vercel.app/parts").then((res) => res.json())
     );
     if (isLoading){
         return <Loading/>

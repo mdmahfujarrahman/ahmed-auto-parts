@@ -13,7 +13,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
     const { id } = useParams();
 
-    const url = `https://ahmed-auto-parts-server.onrender.com/order/${id}`;
+    const url = `https://ahmed-auto-parts-server.vercel.app/order/${id}`;
     const { data: order, isLoading } = useQuery(["order", id], () =>
         fetch(url, {
             method: "GET",

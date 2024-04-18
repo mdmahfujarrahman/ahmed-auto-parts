@@ -11,7 +11,7 @@ const ManageUser = () => {
         isLoading,
         refetch,
     } = useQuery("users", () =>
-        fetch("https://ahmed-auto-parts-server.onrender.com/users", {
+        fetch("https://ahmed-auto-parts-server.vercel.app/users", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,

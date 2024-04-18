@@ -27,7 +27,7 @@ const Purchase = () => {
         isLoading,
         refetch,
     } = useQuery("partsDetails", () =>
-        fetch(`https://ahmed-auto-parts-server.onrender.com/parts/${id}`).then((res) => res.json())
+        fetch(`https://ahmed-auto-parts-server.vercel.app/parts/${id}`).then((res) => res.json())
     );
 
     if (isLoading || loading || adminLoadings) {
@@ -45,7 +45,7 @@ const Purchase = () => {
             price: data.quantity * partsDetails.price,
         };
         
-        fetch("https://ahmed-auto-parts-server.onrender.com/order", {
+        fetch("https://ahmed-auto-parts-server.vercel.app/order", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -74,7 +74,7 @@ const Purchase = () => {
                             price: partsDetails.price,
                         };
                         fetch(
-                            `https://ahmed-auto-parts-server.onrender.com/parts/${partsDetails._id}`,
+                            `https://ahmed-auto-parts-server.vercel.app/parts/${partsDetails._id}`,
                             {
                                 method: "PUT",
                                 headers: {

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const DeleteUser = ({ deleteEmail, refetch }) => {
     const deleteUser = () => {
         if (deleteEmail) {
-            fetch(`https://ahmed-auto-parts-server.onrender.com/user/${deleteEmail}`, {
+            fetch(`https://ahmed-auto-parts-server.vercel.app/user/${deleteEmail}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(

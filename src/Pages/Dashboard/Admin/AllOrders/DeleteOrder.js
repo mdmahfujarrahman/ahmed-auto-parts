@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 const DeleteOrder = ({ deleteOrderId, refetch }) => {
     const deleteProduct = () => {
         if (deleteOrderId) {
-            fetch(`https://ahmed-auto-parts-server.onrender.com/order/${deleteOrderId}`, {
+            fetch(`https://ahmed-auto-parts-server.vercel.app/order/${deleteOrderId}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(
