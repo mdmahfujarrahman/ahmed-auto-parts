@@ -23,7 +23,7 @@ const Login = () => {
     } = useForm();
     const [token] = useToken(user || gUser);
     
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/dashboard";
     let signInError;
 
 
