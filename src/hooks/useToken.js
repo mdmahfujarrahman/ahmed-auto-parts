@@ -7,7 +7,7 @@ const useToken = user =>{
         const email = user?.user?.email
         const currentUser = {email: email}
         if(email){
-            fetch(`https://ahmed-auto-parts-server.onrender.com/user/${email}`, {
+            fetch(`https://ahmed-auto-parts.vercel.app/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     "Content-type": 'application/json',
